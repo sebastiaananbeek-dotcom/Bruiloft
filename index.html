@@ -437,8 +437,8 @@
     </div>
     <div class="card">
       <h3>Het venster</h3>
-      <p class="muted">Klimatologisch is <b>eind mei tot half juni</b> de zoetste plek: veel zon, nog niet de natste onweersmaand, lange dagen (zon onder ±21:50–22:00) en aangename maar niet drukkende temperaturen. <b>Begin september</b> is het alternatief: warm water, rustiger, vaak stabiel nazomerweer, maar kortere dagen.</p>
-      <div class="note" style="margin-top:14px">Juni is gemiddeld warm én zonnig, maar ook de maand van zware onweersbuien (bron: KNMI juni-overzichten). Juli/augustus: meer kans op hitte + hoogseizoen-toeslagen + schoolvakantie. Daarom mikken we op de rand van het hoogseizoen.</div>
+      <p class="muted">Twee sterke vensters. <b>Eind mei tot half juni</b>: veel zon, lange dagen (zon onder ±22:00), aangenaam en nog geen vakantiedrukte. En — nieuw — <b>de eerste twee weken van juli</b> (za 3 & 10 jul): juli geeft statistisch de <b>hoogste kans op warm, droog weer</b>, en omdat de zomervakantie Midden pas op <b>17 juli 2027</b> begint, vallen deze zaterdagen er nét vóór: geen gasten op reis, nog geen vakantietoeslag. <b>Begin september</b> is het rustige nazomer-alternatief.</p>
+      <div class="note" style="margin-top:14px">Juli is de warmste maand (De Bilt: gemiddeld ±18 °C, ±214 zonuren) — vandaar de grootste kans op mooi weer. Elke hoogzomerdag heeft wel onweerskans, dus boek leveranciers vroeg en houd een overdekt plan B. Vanaf 17 juli loopt de vakantie Midden; dán mikken we liever op mei/juni of september.</div>
     </div>
   </div>
 
@@ -576,7 +576,7 @@
     <div class="grid g3" style="gap:20px;margin-top:22px;text-align:left">
       <div><small style="color:#c8d5cd;letter-spacing:.14em;text-transform:uppercase;font-size:10px">Concept</small><br><b style="font-family:var(--font-display);font-size:20px">Bijzonder + weekend</b><br><span style="color:#dbe4de;font-size:13px">wow-plek · liefst vr–za · slapen waar het kan</span></div>
       <div><small style="color:#c8d5cd;letter-spacing:.14em;text-transform:uppercase;font-size:10px">Locatie</small><br><b style="font-family:var(--font-display);font-size:20px">Fort de Gagel</b><br><span style="color:#dbe4de;font-size:13px">wil je iedereen laten slapen → Bergse Bossen</span></div>
-      <div><small style="color:#c8d5cd;letter-spacing:.14em;text-transform:uppercase;font-size:10px">Data</small><br><b style="font-family:var(--font-display);font-size:18px">5 juni 2027</b><br><b style="font-family:var(--font-display);font-size:18px">12 juni 2027</b><br><b style="font-family:var(--font-display);font-size:18px">4 september 2027</b></div>
+      <div><small style="color:#c8d5cd;letter-spacing:.14em;text-transform:uppercase;font-size:10px">Data</small><br><b style="font-family:var(--font-display);font-size:18px">5 juni 2027</b><br><b style="font-family:var(--font-display);font-size:18px">3 juli 2027</b><br><b style="font-family:var(--font-display);font-size:18px">10 juli 2027</b><br><span style="color:#c8d5cd;font-size:12px">(juli = grootste kans op mooi weer, nog vóór de vakantie)</span></div>
     </div>
   </div>
 </div>
@@ -689,21 +689,21 @@ const CONCEPTS = [
 ];
 
 const DATES_A = [
-  {d:"za 22 mei 2027",t:"±18 °C",neer:"~40%",zon:"~7 u/dag",zon2:"21:36",voor:"Lange dagen, veel zon, buiten hoogseizoen → scherpere zaalprijs.",nadeel:"Kans op frisse avond; water nog koel.",bud:"Laagseizoen-tarief (gunstig)"},
-  {d:"za 5 jun 2027",t:"±19–20 °C",neer:"~40%",zon:"~7 u/dag",zon2:"21:57",voor:"Zoetste plek: zon, lange dagen, aangenaam, nét voor hoogseizoenpiek.",nadeel:"Begin van juni-onweerskans.",bud:"Rand hoogseizoen — nog schappelijk"},
+  {d:"za 3 jul 2027",t:"±20–22 °C",neer:"~40%",zon:"~7 u/dag",zon2:"21:58",voor:"Warmste periode van het jaar (juli = hoogste kans op warm & droog), maar nog vóór de zomervakantie Midden (start 17 jul) — dus geen gasten op reis en nog geen vakantietoeslag.",nadeel:"Onweerskans zoals elke hoogzomer; boek leveranciers vroeg.",bud:"Nog buiten vakantie — schappelijk"},
+  {d:"za 10 jul 2027",t:"±20–22 °C",neer:"~40%",zon:"~7 u/dag",zon2:"21:53",voor:"Idem: statistisch de beste kans op zomers weer, laatste zaterdag vóór de vakantie Midden (17 jul). Warme avonden, water op temperatuur.",nadeel:"Vakantie Zuid kan al lopen — check gasten uit die regio.",bud:"Nog buiten vakantie Midden"},
+  {d:"za 5 jun 2027",t:"±19–20 °C",neer:"~40%",zon:"~7 u/dag",zon2:"21:57",voor:"Zoete plek: zon, lange dagen, aangenaam, nét voor de hoogzomerpiek.",nadeel:"Begin van juni-onweerskans.",bud:"Rand hoogseizoen — nog schappelijk"},
   {d:"za 12 jun 2027",t:"±20 °C",neer:"~40%",zon:"~7 u/dag",zon2:"22:02",voor:"Langste dagen van het jaar naderen; warme avonden.",nadeel:"Onweerskans juni; hoogseizoen begint.",bud:"Hoogseizoen-toeslag mogelijk"},
-  {d:"za 4 sep 2027",t:"±19 °C",neer:"~45%",zon:"~6 u/dag",zon2:"20:15",voor:"Nazomer: warm water, stabiel, rustiger agenda's leveranciers.",nadeel:"Kortere dag → eerder donker.",bud:"Naseizoen — vaak korting"},
-  {d:"za 11 sep 2027",t:"±18 °C",neer:"~45%",zon:"~6 u/dag",zon2:"20:00",voor:"Gouden nazomerlicht, minder drukte, prijsvriendelijk.",nadeel:"Weer wisselvalliger dan hoogzomer.",bud:"Naseizoen (gunstig)"},
+  {d:"za 4 sep 2027",t:"±19 °C",neer:"~45%",zon:"~6 u/dag",zon2:"20:15",voor:"Nazomer: warm water, stabiel, rustiger agenda's leveranciers, ná de vakantie.",nadeel:"Kortere dag → eerder donker.",bud:"Naseizoen — vaak korting"},
 ];
 const DATES_B = [
-  {d:"za 29 mei 2027",t:"±18 °C",neer:"~40%",zon:"~7 u/dag",zon2:"21:45",voor:"Vlak voor hoogseizoen, mooie lengte van de dag.",nadeel:"Pinksteren (15/16 mei) net voorbij — check agenda's.",bud:"Gunstig"},
-  {d:"za 19 jun 2027",t:"±20 °C",neer:"~40%",zon:"~7 u/dag",zon2:"22:04",voor:"Bijna langste dag, warme avonden.",nadeel:"Hoogseizoen + onweerspiek.",bud:"Toeslag"},
-  {d:"za 26 jun 2027",t:"±20 °C",neer:"~40%",zon:"~7 u/dag",zon2:"22:03",voor:"Volop zomer, lange lichte avonden.",nadeel:"Vlak voor zomervakantie Zuid; drukte.",bud:"Toeslag"},
-  {d:"za 28 aug 2027",t:"±20 °C",neer:"~45%",zon:"~6,5 u/dag",zon2:"20:31",voor:"Warm water, einde zomer, nog lange avond.",nadeel:"Kan warm zijn; vakantie loopt af.",bud:"Rand hoogseizoen"},
+  {d:"za 22 mei 2027",t:"±18 °C",neer:"~40%",zon:"~7 u/dag",zon2:"21:36",voor:"Lange dagen, veel zon, ruim buiten alle vakanties → scherpere zaalprijs.",nadeel:"Kans op frisse avond; water nog koel.",bud:"Laagseizoen (gunstig)"},
+  {d:"za 29 mei 2027",t:"±18 °C",neer:"~40%",zon:"~7 u/dag",zon2:"21:45",voor:"Vlak voor de zomer, mooie daglengte.",nadeel:"Pinksteren (15/16 mei) net voorbij — check agenda's.",bud:"Gunstig"},
+  {d:"za 26 jun 2027",t:"±20 °C",neer:"~40%",zon:"~7 u/dag",zon2:"22:03",voor:"Volop zomer, lange lichte avonden, nog vóór de vakantie Midden.",nadeel:"Vakantie Zuid nadert; drukte.",bud:"Rand hoogseizoen"},
+  {d:"za 11 sep 2027",t:"±18 °C",neer:"~45%",zon:"~6 u/dag",zon2:"20:00",voor:"Gouden nazomerlicht, minder drukte, prijsvriendelijk, ná de vakantie.",nadeel:"Weer wisselvalliger dan hoogzomer.",bud:"Naseizoen (gunstig)"},
   {d:"za 18 sep 2027",t:"±17 °C",neer:"~50%",zon:"~5,5 u/dag",zon2:"19:45",voor:"Rustig, prijsvriendelijk, sfeervol licht.",nadeel:"Meer regenkans, dag korter.",bud:"Naseizoen (gunstig)"},
 ];
 const AVOID = [
-  {t:"Juli & augustus (hoogzomer)",r:"Hoogseizoen-toeslagen, schoolvakanties (NL/BE), gasten op reis, meer kans op hitte >30 °C — slecht voor pak, bloemen en oudere gasten."},
+  {t:"Zomervakantie Midden: 17 jul – 29 aug 2027",r:"In deze weken zijn veel gasten (en leveranciers) op reis en gelden vakantietoeslagen. De eerste twee zaterdagen van juli (3 & 10 jul) vallen er nét vóór en zijn juist wél aan te raden — hoge kans op mooi weer, zonder de vakantiedrukte."},
   {t:"Meivakantie & Pinksteren (±1–16 mei)",r:"Gasten weg, leveranciers vol, reisdrukte. Ook: begin mei statistisch nog wisselvallig."},
   {t:"Herfst/winter (okt–mrt)",r:"Weinig zon, korte dagen, meer regen/wind, koud aan het water. Niet passend bij 'droog & zonnig'."},
   {t:"Nationale feestdagen & lange weekenden",r:"Koningsdag, Hemelvaart, Bevrijdingsdag, Belgische feestdagen: hogere prijzen, verkeersdrukte, verplichtingen bij gasten."},
