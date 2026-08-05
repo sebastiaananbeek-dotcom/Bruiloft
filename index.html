@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sebastiaan &amp; Daphne · Bruiloftsplan 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --ink:#33413b;          /* diep eucalyptus */
+    --ink-soft:#5a6a60;
+    --mist:#9aa89d;         /* zacht salie */
+    --paper:#faf6ef;        /* champagne ivoor */
+    --paper-2:#f1ebe0;
+    --paper-3:#e9e1d3;
+    --card:#fffdf8;
+    --line:#e4dccd;
+    --line-2:#d8cdb8;
+    --gold:#b08d4f;         /* antiek goud (accent) */
+    --gold-soft:#c9ad74;
+    --gold-deep:#8a6d38;
+    --sage:#7f9678;         /* botanisch groen */
+    --sage-deep:#5d7358;
+    --sage-light:#e8eee3;
+    --water:#5f8a86;        /* gedempt water-teal */
+    --water-deep:#3f625f;
+    --water-light:#e6efec;
+    --blush:#d8a89a;        /* zacht blush, spaarzaam */
+    --blush-light:#f4e6e1;
+    --good:#6e8f6a;
+    --warn:#c39a4e;
+    --bad:#b57468;
+    --shadow-sm:0 1px 2px rgba(51,65,59,.05);
+    --shadow:0 2px 8px rgba(51,65,59,.06),0 16px 40px rgba(51,65,59,.07);
+    --shadow-gold:0 8px 30px rgba(176,141,79,.14);
+    --radius:4px;
+    --radius-lg:8px;
+    --font-display:"Cormorant Garamond",Georgia,serif;
+    --font-body:"Jost",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);color:var(--ink);font-family:var(--font-body);
+    line-height:1.65;font-size:15px;font-weight:300;-webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(1100px 500px at 12% -8%, rgba(127,150,120,.07), transparent 60%),
+      radial-gradient(900px 500px at 92% 4%, rgba(176,141,79,.06), transparent 55%);
+    background-attachment:fixed;
+  }
+  h1,h2,h3,h4{font-family:var(--font-display);font-weight:500;letter-spacing:.005em;line-height:1.12;color:var(--ink)}
+  a{color:var(--water-deep);text-decoration:none;transition:color .2s}
+  a:hover{color:var(--gold-deep)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+  ::selection{background:var(--gold-soft);color:#fff}
+
+  /* botanical divider */
+  .botanical{display:flex;align-items:center;justify-content:center;gap:16px;color:var(--gold);margin:6px 0 2px}
+  .botanical::before,.botanical::after{content:"";height:1px;width:min(120px,18vw);background:linear-gradient(90deg,transparent,var(--gold-soft))}
+  .botanical::after{background:linear-gradient(90deg,var(--gold-soft),transparent)}
+  .botanical svg{width:34px;height:auto;opacity:.9}
+
+  /* ---- header / nav ---- */
+  header.topbar{
+    position:sticky;top:0;z-index:50;background:rgba(250,246,239,.9);
+    backdrop-filter:saturate(1.1) blur(12px);border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{display:flex;align-items:center;gap:22px;height:70px}
+  .brand{font-family:var(--font-display);font-size:23px;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:11px;letter-spacing:.01em}
+  .brand .monogram{min-width:40px;height:34px;padding:0 8px;flex:none;display:flex;align-items:center;justify-content:center;border:1px solid var(--gold);border-radius:20px;color:var(--gold-deep);font-family:var(--font-display);font-size:15px;font-weight:600;font-style:italic;letter-spacing:.02em}
+  .brand small{display:block;font-family:var(--font-body);font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--mist);font-weight:400;margin-top:1px}
+  nav.tabs{display:flex;gap:1px;overflow-x:auto;scrollbar-width:none;flex:1}
+  nav.tabs::-webkit-scrollbar{display:none}
+  nav.tabs button{
+    font-family:var(--font-body);font-size:12px;font-weight:400;letter-spacing:.05em;color:var(--ink-soft);background:none;border:none;
+    padding:9px 13px;cursor:pointer;white-space:nowrap;border-radius:3px;transition:.18s;position:relative;
+  }
+  nav.tabs button::after{content:"";position:absolute;left:13px;right:13px;bottom:4px;height:1px;background:var(--gold);transform:scaleX(0);transition:transform .25s;transform-origin:center}
+  nav.tabs button:hover{color:var(--gold-deep)}
+  nav.tabs button:hover::after{transform:scaleX(1)}
+  nav.tabs button.active{color:var(--ink);font-weight:500}
+  nav.tabs button.active::after{transform:scaleX(1)}
+  .print-btn{border:1px solid var(--gold-soft);background:transparent;border-radius:3px;padding:9px 15px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;color:var(--gold-deep);white-space:nowrap;font-family:var(--font-body);transition:.2s}
+  .print-btn:hover{background:var(--gold);color:#fff;border-color:var(--gold)}
+
+  /* ---- sections ---- */
+  .view{display:none;padding:40px 0 90px;animation:fade .6s ease}
+  .view.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  .eyebrow{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-deep);font-weight:500;margin-bottom:14px;font-family:var(--font-body)}
+  .lead{font-size:19px;color:var(--ink-soft);max-width:64ch;margin-top:10px;font-family:var(--font-display);font-style:italic;font-weight:400;line-height:1.5}
+  section.block{margin-top:52px}
+  section.block > h2{font-size:34px;margin-bottom:4px;font-weight:500}
+  .view > h2{font-size:40px;font-weight:500}
+  .sub{color:var(--mist);font-size:13.5px;margin-bottom:20px;font-style:italic;font-family:var(--font-display)}
+
+  /* ---- hero ---- */
+  .hero{
+    position:relative;border-radius:var(--radius-lg);overflow:hidden;isolation:isolate;
+    background:linear-gradient(165deg,#3f625f 0%,#4f7570 45%,#5f8a86 100%);
+    color:#faf6ef;padding:70px 54px 120px;box-shadow:var(--shadow);
+    border:1px solid rgba(176,141,79,.35);
+  }
+  .hero::before{content:"";position:absolute;inset:0;z-index:-1;
+    background:
+      radial-gradient(130% 90% at 82% -20%,rgba(216,168,154,.32),transparent 52%),
+      radial-gradient(90% 70% at 10% 120%,rgba(127,150,120,.4),transparent 55%);}
+  .hero .frame{position:absolute;inset:16px;border:1px solid rgba(201,173,116,.45);border-radius:5px;pointer-events:none;z-index:3}
+  .hero .frame::before,.hero .frame::after{content:"";position:absolute;width:20px;height:20px;border:1.5px solid var(--gold-soft)}
+  .hero .frame::before{top:-1px;left:-1px;border-right:none;border-bottom:none}
+  .hero .frame::after{bottom:-1px;right:-1px;border-left:none;border-top:none}
+  .hero-content{position:relative;z-index:2}
+  .hero .eyebrow{color:#e6d3b0;letter-spacing:.36em}
+  .hero .script{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:clamp(22px,3vw,30px);color:#e9d9bd;display:block;margin-bottom:4px}
+  .hero h1{font-size:clamp(38px,6vw,64px);color:#fff;max-width:15ch;font-weight:500;line-height:1.04;letter-spacing:.01em}
+  .hero p{max-width:52ch;color:#e7ede9;margin-top:20px;font-size:16.5px;font-weight:300;line-height:1.6}
+  .hero-stats{display:flex;flex-wrap:wrap;gap:0;margin-top:38px;position:relative;z-index:2;border-top:1px solid rgba(201,173,116,.3)}
+  .hero-stats div{padding:20px 34px 4px 0;margin-right:34px;border-right:1px solid rgba(201,173,116,.22)}
+  .hero-stats div:last-child{border-right:none}
+  .hero-stats div span{display:block;font-family:var(--font-display);font-size:32px;color:#fff;font-weight:500;line-height:1}
+  .hero-stats div small{color:#c8d5cd;font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+  /* animated water line at hero base */
+  .hero .waves{position:absolute;left:0;right:0;bottom:-1px;height:70px;z-index:1;opacity:.5}
+  .hero .waves svg{width:200%;height:100%;display:block;animation:drift 18s linear infinite}
+  @keyframes drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---- cards / grid ---- */
+  .grid{display:grid;gap:20px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-sm);transition:box-shadow .3s,transform .3s,border-color .3s;position:relative}
+  .card:hover{box-shadow:var(--shadow);border-color:var(--line-2)}
+  .card h3{font-size:22px;margin-bottom:6px;font-weight:500}
+  .card h4{font-size:12px;margin:16px 0 4px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);font-family:var(--font-body);font-weight:500}
+  .stat{font-family:var(--font-display);font-size:38px;color:var(--water-deep);font-weight:500;line-height:1}
+  .stat.small{font-size:26px}
+  .muted{color:var(--ink-soft);font-size:13.5px;font-weight:300}
+  .pill{display:inline-block;font-size:10px;padding:4px 11px;border-radius:20px;background:var(--water-light);color:var(--water-deep);font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-family:var(--font-body);border:1px solid rgba(95,138,134,.2)}
+  .pill.reed{background:#f4edda;color:var(--gold-deep);border-color:rgba(176,141,79,.25)}
+  .pill.good{background:var(--sage-light);color:var(--sage-deep);border-color:rgba(127,150,120,.25)}
+  .pill.warn{background:#f6ecd4;color:#9a7526;border-color:rgba(195,154,78,.3)}
+  .pill.bad{background:var(--blush-light);color:#a55a4c;border-color:rgba(181,116,104,.28)}
+  .pill.nl{background:#e7efe9;color:#436b5f}
+  .pill.be{background:#f4ece0;color:#8a6d38}
+
+  /* ---- tables ---- */
+  .tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow-sm)}
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--paper-2);font-family:var(--font-body);font-weight:500;color:var(--gold-deep);font-size:10px;letter-spacing:.12em;text-transform:uppercase;position:sticky;top:0}
+  tbody tr{transition:background .15s}
+  tbody tr:hover{background:var(--paper)}
+  tbody tr:last-child td{border-bottom:none}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  tr.total td{font-weight:600;background:var(--water-light);border-top:2px solid var(--gold)}
+  .score{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;font-weight:500;font-size:12px;color:#fff;font-family:var(--font-body)}
+  .bar{height:7px;border-radius:5px;background:var(--paper-3);overflow:hidden;min-width:70px}
+  .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--sage),var(--water));border-radius:5px}
+
+  /* ---- filters ---- */
+  .filters{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;margin-bottom:24px;padding:20px 22px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm)}
+  .filters label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);display:flex;flex-direction:column;gap:6px;font-weight:500}
+  .filters select,.filters input[type=range]{font-family:var(--font-body);font-size:13px;font-weight:300;padding:8px 10px;border:1px solid var(--line-2);border-radius:3px;background:var(--paper);color:var(--ink)}
+  .filters select:focus,.filters input:focus{outline:none;border-color:var(--gold-soft)}
+  input[type=range]{accent-color:var(--gold);cursor:pointer}
+  .chipset{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{font-size:12px;padding:7px 14px;border-radius:20px;border:1px solid var(--line-2);background:var(--paper);cursor:pointer;color:var(--ink-soft);transition:.18s;font-family:var(--font-body);font-weight:300}
+  .chip:hover{border-color:var(--gold-soft);color:var(--gold-deep)}
+  .chip.on{background:var(--water-deep);color:var(--paper);border-color:var(--water-deep)}
+
+  /* ---- location cards ---- */
+  .loc{position:relative;padding:0;overflow:hidden}
+  .loc::after{content:"";position:absolute;inset:0;border:1px solid transparent;border-radius:var(--radius);pointer-events:none;transition:border-color .3s}
+  .loc:hover::after{border-color:var(--gold-soft)}
+  .loc-inner{padding:24px}
+  .loc-photo{display:block;position:relative;height:200px;overflow:hidden;background:linear-gradient(135deg,#3f625f,#5f8a86 60%,#7f9678);text-decoration:none}
+  .loc-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s ease}
+  .loc-photo:hover img{transform:scale(1.06)}
+  .loc-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(51,65,59,.02) 35%,rgba(51,65,59,.5));pointer-events:none}
+  .loc-photo .ph-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#e9d9bd;text-align:center;padding:16px;font-family:var(--font-display)}
+  .loc-photo .ph-fallback b{font-size:22px;font-weight:500;font-style:italic}
+  .loc-photo .ph-fallback .drop{width:30px;height:30px;border-radius:50% 50% 50% 0;background:rgba(233,217,189,.6);transform:rotate(-45deg);margin-bottom:12px}
+  .loc-photo .ph-view{position:absolute;left:16px;bottom:14px;z-index:2;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(51,65,59,.5);backdrop-filter:blur(4px);padding:6px 13px;border-radius:20px;display:inline-flex;align-items:center;gap:5px;font-family:var(--font-body);transition:.25s}
+  .loc-photo:hover .ph-view{background:var(--gold)}
+  .loc .fav{position:absolute;top:16px;right:16px;z-index:3;font-size:19px;cursor:pointer;color:#fff;background:rgba(51,65,59,.4);width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.25);line-height:1;text-align:center;transition:.2s;backdrop-filter:blur(4px)}
+  .loc .fav:hover{background:rgba(51,65,59,.65);transform:scale(1.08)}
+  .loc .fav.on{color:var(--blush);background:#fff;border-color:#fff}
+  .loc .meta{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 10px}
+  .loc .scores{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin-top:14px;font-size:12px;padding-top:14px;border-top:1px solid var(--line)}
+  .loc .scores div{display:flex;justify-content:space-between;gap:8px;align-items:center;color:var(--ink-soft)}
+  .loc dl{display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:12.5px;margin-top:12px}
+  .loc dt{color:var(--mist);font-weight:400}
+  .loc dd{text-align:right;color:var(--ink-soft)}
+  .loc .cost{font-family:var(--font-display);font-size:26px;color:var(--gold-deep);margin-top:14px;font-weight:600}
+  .weblink{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:var(--gold-deep);border:1px solid var(--gold-soft);padding:9px 14px;border-radius:3px;transition:.22s;font-family:var(--font-body)}
+  .weblink:hover{background:var(--gold);border-color:var(--gold);color:#fff}
+
+  /* ---- timeline ---- */
+  .tl{position:relative;padding-left:30px}
+  .tl::before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:1.5px;background:linear-gradient(180deg,var(--gold-soft),var(--sage),var(--water))}
+  .tl-item{position:relative;padding:0 0 24px 6px}
+  .tl-item::before{content:"";position:absolute;left:-26px;top:5px;width:13px;height:13px;border-radius:50%;background:var(--card);border:2px solid var(--water);box-shadow:0 0 0 3px var(--water-light)}
+  .tl-item.signature::before{background:var(--blush);border-color:var(--blush);box-shadow:0 0 0 5px rgba(216,168,154,.25);animation:floaty 3s ease-in-out infinite}
+  .tl-time{font-family:var(--font-display);font-size:16px;color:var(--gold-deep);font-weight:600;font-style:italic}
+  .tl-item h4{margin:3px 0;font-size:16px;letter-spacing:0;text-transform:none;color:var(--ink);font-family:var(--font-display);font-weight:600}
+  .tl-item .det{font-size:12.5px;color:var(--mist)}
+  .tl-item .alt{font-size:12px;color:var(--sage-deep);margin-top:6px;padding:7px 12px;background:var(--sage-light);border-radius:3px;display:inline-block;border-left:2px solid var(--sage)}
+
+  /* ---- progress vs budget ---- */
+  .budgetbar{height:38px;border-radius:3px;background:var(--paper-3);overflow:hidden;display:flex;position:relative;border:1px solid var(--line-2)}
+  .budgetbar i{display:block;height:100%;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+  .budgetbar .cap{position:absolute;right:10px;top:0;line-height:38px;font-size:12px;color:var(--ink-soft);font-weight:500}
+
+  /* ---- scenario toggle ---- */
+  .segmented{display:inline-flex;background:var(--paper-2);border-radius:4px;padding:4px;margin-bottom:20px;border:1px solid var(--line)}
+  .segmented button{border:none;background:none;padding:9px 18px;border-radius:3px;font-size:12.5px;cursor:pointer;color:var(--ink-soft);font-family:var(--font-body);font-weight:300;letter-spacing:.02em;transition:.2s}
+  .segmented button.active{background:var(--card);color:var(--gold-deep);box-shadow:var(--shadow-sm);font-weight:500}
+
+  .chartbox{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-sm)}
+  .chartbox h3{font-size:17px}
+  .chartbox canvas{max-height:300px}
+  .chart-fallback{font-size:12px;color:var(--mist);margin-top:12px;line-height:1.5}
+
+  .note{font-size:12.5px;color:var(--ink-soft);background:linear-gradient(90deg,var(--paper-2),transparent);border-left:2px solid var(--gold);padding:13px 16px;border-radius:0 3px 3px 0;margin-top:18px;line-height:1.6}
+  .legend-src{font-size:11.5px;color:var(--mist);margin-top:10px;font-style:italic;font-family:var(--font-display)}
+  .legend-src b{color:var(--ink-soft);font-style:normal;font-family:var(--font-body)}
+
+  footer{border-top:1px solid var(--line);padding:34px 0 50px;font-size:11.5px;color:var(--mist);text-align:center;line-height:1.7;font-style:italic;font-family:var(--font-display)}
+  footer .botanical{margin-bottom:16px}
+
+  /* checklist */
+  .task{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--line)}
+  .task:last-child{border:none}
+  .task input{margin-top:3px;width:16px;height:16px;accent-color:var(--gold);cursor:pointer;flex:none}
+  .task .t-body{flex:1}
+  .task .t-body .t-title{font-size:14px;color:var(--ink)}
+  .task.done .t-title{text-decoration:line-through;color:var(--mist)}
+  .task .t-meta{font-size:11.5px;color:var(--mist);margin-top:2px}
+
+  @media(max-width:860px){
+    .g4{grid-template-columns:repeat(2,1fr)}
+    .g3{grid-template-columns:1fr}
+    .g2{grid-template-columns:1fr}
+    .hero{padding:44px 26px 90px}
+    .view > h2{font-size:32px}
+  }
+  @media(max-width:560px){
+    .g4{grid-template-columns:1fr}
+    .hero-stats div{padding-right:20px;margin-right:20px}
+    #top3-cards .card{grid-template-columns:1fr!important}
+    .brand small{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+  }
+
+  /* ---- print ---- */
+  @media print{
+    header.topbar,nav.tabs,.print-btn,.filters,.segmented,.hero .waves{display:none!important}
+    .view{display:block!important;padding:14px 0;page-break-inside:avoid}
+    body{background:#fff;font-size:11px;background-image:none}
+    .card,.chartbox,.tblwrap,.hero{box-shadow:none;border:1px solid #ccc}
+    .hero{background:#3f625f!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .view h2{page-break-after:avoid}
+    a{color:#000}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="brand"><span class="monogram">S&amp;D</span> <span>Sebastiaan &amp; Daphne<small>Bruiloftsplan 2027</small></span></div>
+    <nav class="tabs" id="tabs"></nav>
+    <button class="print-btn" onclick="window.print()">Bewaar als PDF</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ============ START ============ -->
+<div class="view active" id="v-start">
+  <div class="hero">
+    <div class="frame"></div>
+    <div class="hero-content">
+      <div class="eyebrow">Ons aanbevolen concept</div>
+      <span class="script">Sebastiaan &amp; Daphne —</span>
+      <h1>een écht bijzondere plek</h1>
+      <p>Voor ±80 gasten een locatie waar iedereen later denkt: dít was speciaal. De ideale vorm is een weekend — vrijdag diner, zaterdag trouwen, diner en feest — en wáár het kan blijven de gasten graag slapen. Kan dat voor iedereen op de locatie zelf, dan mag het budget van €25.000 naar €30.000.</p>
+      <div class="hero-stats">
+        <div><span>±80</span><small>Gasten</small></div>
+        <div><span>€25–30k</span><small>Budget · €30k áls iedereen slaapt</small></div>
+        <div><span>40</span><small>Bijzondere locaties</small></div>
+        <div><span>vr–za</span><small>Weekend waar het kan</small></div>
+      </div>
+    </div>
+    <div class="waves" aria-hidden="true">
+      <svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path d="M0,40 C150,10 300,70 450,40 C600,10 750,70 900,40 C1050,10 1200,70 1350,40 L1350,70 L0,70 Z" fill="rgba(233,217,189,.35)"/><path d="M0,50 C150,25 300,75 450,50 C600,25 750,75 900,50 C1050,25 1200,75 1350,50 L1350,70 L0,70 Z" fill="rgba(250,246,239,.25)"/></svg>
+    </div>
+  </div>
+
+  <div class="botanical" style="margin-top:34px" aria-hidden="true">
+    <svg viewBox="0 0 60 30"><g fill="none" stroke="currentColor" stroke-width="1.1"><path d="M30,4 C30,12 30,20 30,26"/><path d="M30,10 C24,7 20,8 17,5"/><path d="M30,10 C36,7 40,8 43,5"/><path d="M30,16 C24,13 19,14 15,11"/><path d="M30,16 C36,13 41,14 45,11"/><path d="M30,22 C25,20 21,20 18,17"/><path d="M30,22 C35,20 39,20 42,17"/></g><circle cx="30" cy="27" r="1.6" fill="currentColor"/></svg>
+  </div>
+
+  <section class="block">
+    <h2 style="text-align:center">In het kort</h2>
+    <p class="sub" style="text-align:center">Het plan in één oogopslag</p>
+    <div class="grid g3" style="margin-top:14px">
+      <div class="card">
+        <div class="pill reed">Concept</div>
+        <h3 style="margin-top:8px">Bijzonder, liefst een weekend</h3>
+        <p class="muted">Een plek met wow-factor. Waar het kan een weekend: vrijdag diner → (blijven slapen) → zaterdag ceremonie → diner → feest. Slapen is een pré, geen must — Fort de Gagel kan het niet, Bergse Bossen wel.</p>
+      </div>
+      <div class="card">
+        <div class="pill">Waarom dit past</div>
+        <h3 style="margin-top:8px">40 keer "dit was speciaal"</h3>
+        <p class="muted">56 bijzondere locaties in NL, BE, LU en op de Wadden — met jullie referenties erin. Filter op 'iedereen kan slapen', zwembad, weekendbruiloft en 'net iets duurder' — een topper zonder 80 bedden valt niet af.</p>
+      </div>
+      <div class="card">
+        <div class="pill good">Financieel</div>
+        <h3 style="margin-top:8px">€25.000, of €30.000</h3>
+        <p class="muted">Standaard €25k. Kunnen álle gasten op de locatie zélf blijven slapen, dan mag het naar €30k (+€5k) voor de tweede dag en overnachting. Beide scenario's kloppen met 7,8% onvoorzien.</p>
+      </div>
+    </div>
+    <div class="note">Alle prijzen zijn indicaties/schattingen op basis van openbare bronnen (geraadpleegd 5 augustus 2026) en marktgemiddelden 2026 — voor een volledig verzorgd overnachtingsweekend voor ~80 gasten zijn ze een ondergrens; vraag voor 2027 altijd een actuele offerte. Bij locaties waar het domein zélf niet ~80 bedden heeft, geldt de overnachting via bijgeboekte tenten of nabije accommodatie.</div>
+  </section>
+</div>
+
+<!-- ============ CONCEPTEN ============ -->
+<div class="view" id="v-concepten">
+  <div class="eyebrow">I · De concepten</div>
+  <h2>Drie concepten</h2>
+  <p class="lead">Drie richtingen die allemaal draaien om water en natuur — maar met heel verschillende risicoprofielen en prijskaartjes.</p>
+  <div class="grid g3" style="margin-top:22px" id="concept-cards"></div>
+</div>
+
+<!-- ============ LOCATIES ============ -->
+<div class="view" id="v-locaties">
+  <div class="eyebrow">II · Het locatieonderzoek</div>
+  <h2>Locatieonderzoek</h2>
+  <p class="lead">56 bijzondere locaties in Nederland, België, Luxemburg en op de Waddeneilanden — inclusief jullie referenties (Altenbroek, Rhederoord, Flora Batava, Outpost, L•Seven, De Heerlijckyt) en 5 net iets duurdere toppers. Niet allemaal aan het water, maar stuk voor stuk een plek waar gasten later denken: dít was speciaal. Filter op wat voor jullie telt en geef locaties een ♥ en vergelijk ze op de tab ‘Mijn selectie’.</p>
+
+  <div class="filters" style="margin-top:20px">
+    <label>Land
+      <div class="chipset" id="f-land">
+        <span class="chip on" data-v="all">Alle</span>
+        <span class="chip" data-v="NL">Nederland</span>
+        <span class="chip" data-v="BE">België</span>
+        <span class="chip" data-v="LU">Luxemburg</span>
+      </div>
+    </label>
+    <label>Type
+      <select id="f-type"><option value="all">Alle types</option></select>
+    </label>
+    <label>Ligging water
+      <div class="chipset" id="f-water">
+        <span class="chip on" data-v="all">Alle</span>
+        <span class="chip" data-v="op">Op het water</span>
+        <span class="chip" data-v="aan">Aan het water</span>
+        <span class="chip" data-v="nee">Niet nodig</span>
+      </div>
+    </label>
+    <label>Iedereen kan blijven slapen
+      <div class="chipset" id="f-sleep">
+        <span class="chip on" data-v="all">Alle</span>
+        <span class="chip" data-v="ja80">Ja, ±80</span>
+        <span class="chip" data-v="deels">Deels/uitbreidbaar</span>
+      </div>
+    </label>
+    <label>Extra's
+      <div class="chipset" id="f-extra">
+        <span class="chip" id="f-pool" data-on="0">🏊 Zwembad</span>
+        <span class="chip" id="f-weekend" data-on="0">📅 Weekendbruiloft</span>
+        <span class="chip" id="f-premium" data-on="0">✦ Net iets duurder</span>
+      </div>
+    </label>
+    <label>Max. totaalkosten: <b id="budlabel">€35.000</b>
+      <input type="range" id="f-budget" min="18000" max="35000" step="1000" value="35000">
+    </label>
+    <label style="align-self:flex-end">
+      <span class="chip" id="f-favonly" data-on="0">♥ Alleen mijn selectie</span>
+    </label>
+  </div>
+
+  <p class="sub" style="margin:4px 0 16px"><b id="loc-count">56</b> locaties gevonden</p>
+  <div class="grid g3" id="loc-cards"></div>
+
+  <section class="block">
+    <h2>Vergelijkingstabel</h2>
+    <p class="sub">Alle locaties naast elkaar. Gesorteerd op totaalscore.</p>
+    <div class="tblwrap">
+      <table id="loc-table"></table>
+    </div>
+    <p class="legend-src">Score = ongewogen gemiddelde van zes deelscores. Voor de definitieve keuze telt de <a href="#" onclick="go('beslismatrix');return false">gewogen beslismatrix</a> zwaarder.</p>
+  </section>
+</div>
+
+<!-- ============ TOP 3 ============ -->
+<div class="view" id="v-top3">
+  <div class="eyebrow">III · De top 3</div>
+  <h2>Top 3 locaties</h2>
+  <p class="lead">De drie sterkste allrounders op bijzonderheid, gastenbeleving en prijs-kwaliteit. Overnachting telt mee als pluspunt — maar het is geen eis, dus een echte wow-locatie zonder 80 bedden valt niet af. Eén van elke smaak. Dit is óns advies; jullie eigen shortlist maak je op de tab <b>Mijn selectie</b> met het ♥ op elke locatie.</p>
+  <div class="grid" style="margin-top:22px;gap:18px" id="top3-cards"></div>
+</div>
+
+<!-- ============ MIJN SELECTIE ============ -->
+<div class="view" id="v-selectie">
+  <div class="eyebrow">Jullie shortlist</div>
+  <h2>Mijn selectie</h2>
+  <p class="lead">Alle locaties die jullie een ♥ hebben gegeven, hier naast elkaar voor een eerlijk vergelijk. Jullie selectie blijft bewaard — ook als je de pagina sluit en later terugkomt. Geef een hart op de tab <b>Locaties</b> en kom hier terug om te wikken en wegen.</p>
+  <div id="selectie-empty" style="margin-top:28px"></div>
+  <div id="selectie-cards" class="grid g3" style="margin-top:24px;gap:18px"></div>
+  <section class="block" id="selectie-compare-wrap" style="display:none">
+    <h2>Vergelijk je selectie</h2>
+    <p class="sub">Zij-aan-zij op de punten die tellen. Beste waarde per rij is gemarkeerd.</p>
+    <div class="tblwrap"><table id="selectie-table"></table></div>
+  </section>
+</div>
+
+<!-- ============ DATA ============ -->
+<div class="view" id="v-data">
+  <div class="eyebrow">IV · De datum</div>
+  <h2>Beste trouwdata 2027</h2>
+  <p class="lead">Op basis van KNMI/KMI-klimaatnormalen (1991–2020). Een exacte weersvoorspelling voor 2027 is <b>niet</b> mogelijk; dit zijn kansen, geen garanties.</p>
+
+  <div class="grid g2" style="margin-top:22px">
+    <div class="chartbox">
+      <h3 style="font-size:16px;margin-bottom:12px">Zonuren vs. neerslag per maand (De Bilt, normaal 1991–2020)</h3>
+      <canvas id="climChart"></canvas>
+      <div class="chart-fallback" id="climFallback"></div>
+    </div>
+    <div class="card">
+      <h3>Het venster</h3>
+      <p class="muted">Klimatologisch is <b>eind mei tot half juni</b> de zoetste plek: veel zon, nog niet de natste onweersmaand, lange dagen (zon onder ±21:50–22:00) en aangename maar niet drukkende temperaturen. <b>Begin september</b> is het alternatief: warm water, rustiger, vaak stabiel nazomerweer, maar kortere dagen.</p>
+      <div class="note" style="margin-top:14px">Juni is gemiddeld warm én zonnig, maar ook de maand van zware onweersbuien (bron: KNMI juni-overzichten). Juli/augustus: meer kans op hitte + hoogseizoen-toeslagen + schoolvakantie. Daarom mikken we op de rand van het hoogseizoen.</div>
+    </div>
+  </div>
+
+  <section class="block">
+    <h2>5 voorkeursweekenden</h2>
+    <div class="tblwrap"><table id="datesA"></table></div>
+  </section>
+  <section class="block">
+    <h2>5 alternatieve weekenden</h2>
+    <div class="tblwrap"><table id="datesB"></table></div>
+  </section>
+  <section class="block">
+    <h2>Vermijden</h2>
+    <div class="grid g2" style="margin-top:8px" id="avoid-cards"></div>
+  </section>
+</div>
+
+<!-- ============ PROGRAMMA ============ -->
+<div class="view" id="v-programma">
+  <div class="eyebrow">V · De dag</div>
+  <h2>Dagprogramma</h2>
+  <p class="lead">Volledige trouwdag op één locatie. Het <span style="color:var(--coral);font-weight:600">signature moment</span> is oranje gemarkeerd.</p>
+  <div class="grid g2" style="margin-top:22px;gap:34px">
+    <div><div class="tl" id="tl-1"></div></div>
+    <div><div class="tl" id="tl-2"></div></div>
+  </div>
+  <div class="card" style="margin-top:26px;border-left:2px solid var(--blush)">
+    <div class="pill bad" style="background:var(--blush-light);color:#a55a4c">Signature moment</div>
+    <h3 style="margin-top:8px">Lichtjes over het water bij zonsondergang</h3>
+    <p class="muted">Precies bij zonsondergang worden alle gasten naar de gracht/waterkant geleid. Terwijl een strijkkwartet of solo-cello speelt, laten jullie en de gasten drijvende waxinelichtjes/waterlantaarns (biologisch afbreekbaar) los over het water — synchroon met een korte, persoonlijke toost. Geen dure vuurwerkshow, maar stil, intiem en visueel adembenemend op de foto's. Kosten: ±€250 (lantaarns, cello 1 uur al in entertainment). Slecht weer: verplaats naar overdekt terras met het water als achtergrond, of naar binnen met honderden kaarsen.</p>
+  </div>
+</div>
+
+<!-- ============ GASTEN ============ -->
+<div class="view" id="v-gasten">
+  <div class="eyebrow">VI · De gasten</div>
+  <h2>Gastenbeleving</h2>
+  <p class="lead">De volledige gastreis van save-the-date tot de brunch de dag erna. Ingedeeld naar wat essentieel is, aanbevolen, of luxe-als-er-budget-over-is.</p>
+  <div class="grid g3" style="margin-top:22px" id="guest-cols"></div>
+</div>
+
+<!-- ============ BUDGET ============ -->
+<div class="view" id="v-budget">
+  <div class="eyebrow">VII · De begroting</div>
+  <h2>Begroting &amp; scenario's</h2>
+  <p class="lead">All-in scenario's — alles inbegrepen: locatie, catering, drank, personeel, kleding, ringen, fotografie, styling, vervoer, vergunningen, verzekering, onvoorzien en BTW. Standaard is de grens €25.000. Kiezen jullie een plek waar álle gasten kunnen blijven slapen, dan mag het budget optioneel naar €30.000 — het vierde scenario laat zien hoe.</p>
+
+  <div class="segmented" id="scen-toggle" style="margin-top:20px;flex-wrap:wrap">
+    <button data-s="0">Budgetbewust · €20k</button>
+    <button data-s="1" class="active">Gebalanceerd · €23k</button>
+    <button data-s="2">Maximaal · €25k</button>
+    <button data-s="3">Weekend, iedereen slaapt · €30k</button>
+  </div>
+
+  <div class="grid g4" style="margin-bottom:18px" id="budget-kpi"></div>
+
+  <div class="card" style="margin-bottom:18px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+      <h3 style="font-size:16px" id="budget-captitle">Voortgang t.o.v. de grens</h3>
+      <span class="muted" id="budgetpct"></span>
+    </div>
+    <div class="budgetbar"><i id="budgetfill"></i><span class="cap" id="budget-caplabel">€25.000</span></div>
+    <p class="legend-src" id="budget-headroom"></p>
+  </div>
+
+  <div class="grid g2" style="gap:18px">
+    <div class="chartbox">
+      <h3 style="font-size:16px;margin-bottom:12px">Budget per categorie</h3>
+      <canvas id="budgetChart"></canvas>
+      <div class="chart-fallback" id="budgetFallback"></div>
+    </div>
+    <div class="tblwrap" style="align-self:start">
+      <table id="budget-table"></table>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">Onvoorzien is in elk scenario 7,8% (ruim boven de vereiste 7,5%): €1.550 / €1.800 / €1.950. Elk scenario telt exact op tot zijn totaal en blijft binnen de harde grens van €25.000. Catering is bewust de grootste post; trouwkleding, ringen en haar/make-up zijn laag gehouden (tweedehands/outlet, bestaande sieraden) — dit zijn de eerste knoppen als jullie hier méér willen.</div>
+</div>
+
+<!-- ============ LEVERANCIERS ============ -->
+<div class="view" id="v-leveranciers">
+  <div class="eyebrow">VIII · De leveranciers</div>
+  <h2>Leveranciersplan</h2>
+  <p class="lead">Wanneer boeken, realistisch prijsbereik, en waar de verborgen kosten en contractvalkuilen zitten.</p>
+  <div class="tblwrap" style="margin-top:22px"><table id="vendor-table"></table></div>
+</div>
+
+<!-- ============ PLANNING ============ -->
+<div class="view" id="v-planning">
+  <div class="eyebrow">IX · De planning</div>
+  <h2>Planning &amp; actielijst</h2>
+  <p class="lead">Vink af wat klaar is. Voortgang wordt live bijgehouden (blijft binnen deze sessie bewaard).</p>
+  <div class="card" style="margin-top:18px;margin-bottom:20px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+      <h3 style="font-size:16px">Voortgang</h3><span class="muted" id="taskpct">0%</span>
+    </div>
+    <div class="bar" style="height:10px"><i id="taskfill" style="width:0%"></i></div>
+  </div>
+  <div id="phase-list"></div>
+</div>
+
+<!-- ============ RISICO ============ -->
+<div class="view" id="v-risico">
+  <div class="eyebrow">X · De risico’s</div>
+  <h2>Risicoregister</h2>
+  <p class="lead">Dertien risico's met kans, impact, preventie, noodplan en eigenaar.</p>
+  <div class="tblwrap" style="margin-top:22px"><table id="risk-table"></table></div>
+</div>
+
+<!-- ============ BESLISMATRIX ============ -->
+<div class="view" id="v-beslismatrix">
+  <div class="eyebrow">XI · De keuze</div>
+  <h2>Beslismatrix</h2>
+  <p class="lead">Gewogen vergelijking van de top 3. Pas de wegingen aan met de sliders — de eindscore herberekent live. Totaal moet 100% zijn.</p>
+  <div class="grid g2" style="margin-top:22px;gap:18px">
+    <div class="card"><h3 style="font-size:16px;margin-bottom:12px">Wegingen <span class="muted" id="weightsum"></span></h3><div id="weights"></div></div>
+    <div class="chartbox"><h3 style="font-size:16px;margin-bottom:12px">Eindscore</h3><canvas id="matrixChart"></canvas><div class="chart-fallback" id="matrixFallback"></div></div>
+  </div>
+  <div class="tblwrap" style="margin-top:18px"><table id="matrix-table"></table></div>
+</div>
+
+<!-- ============ BESLISSINGEN ============ -->
+<div class="view" id="v-beslissingen">
+  <div class="eyebrow">XII · De eerste stappen</div>
+  <h2>Eerste beslissingen</h2>
+  <p class="lead">Wat jullie — in deze volgorde — als eerste moeten vastleggen. Alles daarna hangt hiervan af.</p>
+  <div class="tl" id="decisions" style="margin-top:24px;max-width:760px"></div>
+
+  <div class="card" style="margin-top:34px;background:linear-gradient(160deg,#3f625f,#5f8a86);color:#faf6ef;border:1px solid rgba(201,173,116,.4);position:relative;overflow:hidden;text-align:center;padding:40px">
+    <div style="position:absolute;inset:14px;border:1px solid rgba(201,173,116,.35);border-radius:4px;pointer-events:none"></div>
+    <div class="botanical" style="color:#c9ad74;margin-bottom:6px" aria-hidden="true">
+      <svg viewBox="0 0 60 30"><g fill="none" stroke="currentColor" stroke-width="1.1"><path d="M30,4 C30,12 30,20 30,26"/><path d="M30,10 C24,7 20,8 17,5"/><path d="M30,10 C36,7 40,8 43,5"/><path d="M30,16 C24,13 19,14 15,11"/><path d="M30,16 C36,13 41,14 45,11"/><path d="M30,22 C25,20 21,20 18,17"/><path d="M30,22 C35,20 39,20 42,17"/></g><circle cx="30" cy="27" r="1.6" fill="currentColor"/></svg>
+    </div>
+    <div class="eyebrow" style="color:#e6d3b0">Onze aanbeveling</div>
+    <span style="font-family:var(--font-display);font-style:italic;color:#e9d9bd;font-size:22px">Eén concept, één locatie, drie data</span>
+    <div class="grid g3" style="gap:20px;margin-top:22px;text-align:left">
+      <div><small style="color:#c8d5cd;letter-spacing:.14em;text-transform:uppercase;font-size:10px">Concept</small><br><b style="font-family:var(--font-display);font-size:20px">Bijzonder + weekend</b><br><span style="color:#dbe4de;font-size:13px">wow-plek · liefst vr–za · slapen waar het kan</span></div>
+      <div><small style="color:#c8d5cd;letter-spacing:.14em;text-transform:uppercase;font-size:10px">Locatie</small><br><b style="font-family:var(--font-display);font-size:20px">Fort de Gagel</b><br><span style="color:#dbe4de;font-size:13px">wil je iedereen laten slapen → Bergse Bossen</span></div>
+      <div><small style="color:#c8d5cd;letter-spacing:.14em;text-transform:uppercase;font-size:10px">Data</small><br><b style="font-family:var(--font-display);font-size:18px">5 juni 2027</b><br><b style="font-family:var(--font-display);font-size:18px">12 juni 2027</b><br><b style="font-family:var(--font-display);font-size:18px">4 september 2027</b></div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer class="wrap">
+  <div class="botanical" aria-hidden="true">
+    <svg viewBox="0 0 60 30"><g fill="none" stroke="currentColor" stroke-width="1.1"><path d="M30,4 C30,12 30,20 30,26"/><path d="M30,10 C24,7 20,8 17,5"/><path d="M30,10 C36,7 40,8 43,5"/><path d="M30,16 C24,13 19,14 15,11"/><path d="M30,16 C36,13 41,14 45,11"/><path d="M30,22 C25,20 21,20 18,17"/><path d="M30,22 C35,20 39,20 42,17"/></g><circle cx="30" cy="27" r="1.6" fill="currentColor"/></svg>
+  </div>
+  <p style="font-size:17px;color:var(--gold-deep);margin-bottom:10px">Sebastiaan &amp; Daphne · Bruiloftsplan 2027</p>
+  <p>Prijzen zijn indicaties en schattingen op basis van openbare bronnen, geraadpleegd 5&nbsp;augustus&nbsp;2026. Klimaatcijfers: KNMI/KMI-normalen 1991–2020.<br>Vraag altijd actuele offertes voor 2027. Dit is planningsadvies, geen contract.</p>
+</footer>
+
+<script>
+/* =================================================================
+   DATA
+   ================================================================= */
+const EUR = n => "€"+Math.round(n).toLocaleString("nl-NL");
+
+const LOCATIONS = [
+  {id:"gagel", naam:"Fort de Gagel", plaats:"Utrecht", land:"NL", web:"fortdegagel.nl", url:"https://fortdegagel.nl/particulier/trouwen/", img:"https://fortdegagel.nl/wp-content/uploads/2025/03/2024-08-30-SL-Mooibelicht-117.jpeg", type:"Forteiland", water:"op", waterTxt:"Forteiland in slotgracht", cap:"50-150", sleep:"nee", pool:0, weekend:0, excl:"Ja", cat:"all-in pakket", overnacht:"Nee (hotels Utrecht 10 min)", slecht:"Wachthuis + vaste festivaltent", bereik:"Direct aan A27/A2, Utrecht", park:"Gratis voor de deur", sterk:"All-in vanaf ±€12.233 (bron). Alles op 1 eiland, echt op het water, binnen+buiten, weerbestendig.", zwak:"Geen overnachting op locatie — past minder bij jullie weekend-wens.", totaal:22500, priceType:"actueel", s:{bijz:9,gast:9,water:9,pk:9,log:9,weer:9}},
+  {id:"pampus", naam:"Forteiland Pampus", plaats:"Muiden", land:"NL", web:"pampusevents.nl", url:"https://www.pampusevents.nl/feesten/huwelijk", img:"https://www.pampus.nl/wp-content/uploads/2023/08/Feest-op-Pampus-88-1200x800-1.jpg", type:"Eiland/Fort", water:"op", waterTxt:"Onbewoond eiland in IJmeer", cap:"tot 1200", sleep:"nee", pool:0, weekend:0, excl:"Ja (na 17u)", cat:"verplicht maatwerk", overnacht:"Zeer beperkt", slecht:"Fortkamers binnen", bereik:"20-30 min varen v/a Muiden/IJburg", park:"Op vasteland", sterk:"Onvergetelijk eigen eiland, uniek boottransport, maximale wow-factor.", zwak:"Zegt zelf: min. €25.000. Slechts 1x/jaar, selectie op verhaal. Geen overnachting.", totaal:31000, priceType:"actueel", s:{bijz:10,gast:10,water:10,pk:3,log:3,weer:6}},
+  {id:"drift", naam:"Drift Beachclub", plaats:"Strand Horst, Ermelo", land:"NL", web:"driftbeachclub.nl", url:"https://driftbeachclub.nl/trouwlocatie/", img:"", type:"Beachclub", water:"aan", waterTxt:"Aan strand/Wolderwijd", cap:"tot ±120", sleep:"nee", pool:0, weekend:0, excl:"Ja", cat:"eigen catering verplicht", overnacht:"Nabij (geen op locatie)", slecht:"Uitbouw met afneembaar dak", bereik:"Auto, Gelderland", park:"Betaald (Leisure Lands)", sterk:"Officiele trouwlocatie, mooie zonsondergang, weervast dak.", zwak:"Betaald parkeren, geen overnachting op locatie.", totaal:21000, priceType:"schatting", s:{bijz:7,gast:8,water:8,pk:8,log:8,weer:9}},
+  {id:"atsea", naam:"Strandpaviljoen At Sea", plaats:"Dronten", land:"NL", web:"atsea-restaurant.nl", url:"https://www.atsea-restaurant.nl/trouwlocatie-aan-het-water/", img:"https://www.atsea-restaurant.nl/wp-content/uploads/2024/02/DSC_2112_fullres-scaled.jpg", type:"Strandpaviljoen", water:"aan", waterTxt:"Privéstrand + serre aan Drontermeer", cap:"tot ±100", sleep:"deels", pool:0, weekend:1, excl:"Ja", cat:"eigen catering verplicht", overnacht:"16 luxe safaritenten op eigen camping", slecht:"Ruime serre met zicht op meer", bereik:"Auto, Flevoland", park:"Eigen parkeren", sterk:"Privéstrand, aankomst per boot, 16 safaritenten voor gasten + ontbijt = weekend mogelijk.", zwak:"16 tenten = niet alle 80 op locatie; capaciteit rond 80-100.", totaal:20500, priceType:"schatting", s:{bijz:8,gast:8,water:9,pk:8,log:8,weer:8}},
+  {id:"pllek", naam:"PLLEK", plaats:"Amsterdam-Noord", land:"NL", web:"pllek.nl", url:"https://pllek.nl/verhuur/huwelijk/", img:"https://pllek.nl/wp-content/uploads/2022/02/trouwen_0000_LOVE-letters-1024x683.jpg", type:"Industrieel / IJ-oever", water:"aan", waterTxt:"Aan het IJ, eigen strandje", cap:"tot ±120", sleep:"nee", pool:0, weekend:0, excl:"Ja (privé afhuur)", cat:"in huis", overnacht:"Amsterdam hotels", slecht:"Binnenruimte (zeecontainers/glas)", bereik:"Pont v/a CS", park:"Beperkt (OV/pont)", sterk:"Stoer, urban, IJ aan je voeten, zonsondergang over water.", zwak:"Parkeren lastig, strandje gedeeld, geen overnachting.", totaal:23500, priceType:"schatting", s:{bijz:8,gast:8,water:7,pk:6,log:6,weer:7}},
+  {id:"moreitz", naam:"More-Itz", plaats:"Drimmelen (Biesbosch)", land:"NL", web:"more-itz.nl", url:"https://www.more-itz.nl/trouwen-aan-het-water", img:"https://www.more-itz.nl/upload/achtergronden/trouwen_aan_het_water.jpg", type:"Restaurant aan jachthaven", water:"aan", waterTxt:"Grootste binnenjachthaven van Europa", cap:"tot ±120", sleep:"nee", pool:0, weekend:0, excl:"Ja", cat:"in huis", overnacht:"Nabij", slecht:"Binnen + overdekt terras", bereik:"Auto, Noord-Brabant", park:"Ruim eigen parkeren", sterk:"Rand Biesbosch (natuur), boten + zonsondergang, compleet verzorgd.", zwak:"Geen overnachting op locatie; minder 'anders dan anders'.", totaal:20000, priceType:"schatting", s:{bijz:7,gast:8,water:8,pk:9,log:8,weer:8}},
+  {id:"bounty", naam:"Zeil- & Trouwschip Bounty", plaats:"Hoorn/Lelystad e.o.", land:"NL", web:"trouwschip.nl", url:"https://trouwschip.nl/officiele-trouwlocaties", img:"https://assets.cdn.filesafe.space/1dS11HPwnhZC4XRADvj8/media/68f8bcadad50b2ac4b4eb369.jpeg", type:"Varend schip", water:"op", waterTxt:"Op het water — varend", cap:"50 varend / 85 aan wal", sleep:"nee", pool:0, weekend:0, excl:"Ja (heel schip)", cat:"aan boord (beperkt)", overnacht:"Nee", slecht:"Onder dek / kajuit", bereik:"Start historische haven", park:"In vertrekhaven", sterk:"Ceremonie + vaartocht ineen, maximaal 'op het water'.", zwak:"Max 50 varend / 85 aan wal; feestruimte krap; weer = harde factor.", totaal:22000, priceType:"schatting", s:{bijz:9,gast:8,water:10,pk:6,log:5,weer:5}},
+  {id:"bayard", naam:"Château Bayard", plaats:"Éghezée (BE)", land:"BE", web:"chateaubayard.be", url:"https://chateaubayard.be/en/weddings", img:"https://chateaubayard.be/uploads/images/_ratio3x2_crop_6/Galerie-mariage-4_2021-02-27-225900.jpg", type:"Kasteel + waterpartij", water:"aan", waterTxt:"Park met waterpartij & bootjes", cap:"±80-150", sleep:"deels", pool:0, weekend:1, excl:"Ja (privédomein)", cat:"traiteur", overnacht:"32 slaapplaatsen op domein", slecht:"Orangerie + authentieke schuur", bereik:"Auto, ±2u v/a NL", park:"Ruim op domein", sterk:"Sprookjesdecor, privédomein, 32 bedden = weekend mogelijk, meerdaags.", zwak:"Reisafstand NL-gasten; 32 bedden < 80; 'water' is vijver.", totaal:24500, priceType:"schatting", s:{bijz:9,gast:9,water:6,pk:6,log:5,weer:8}},
+  {id:"theduke", naam:"Landgoed The Duke", plaats:"Nistelrode (NB)", land:"NL", web:"theduke.nl", url:"https://www.theduke.nl/", img:"", type:"Landgoed / golfresort", water:"nee", waterTxt:"Bos & golfbaan", cap:"tot ±150", sleep:"deels", pool:0, weekend:1, excl:"Deels", cat:"in huis", overnacht:"18 riante suites op landgoed", slecht:"Trouwzaal met glazen pui (buiten-naar-binnen)", bereik:"Auto, midden Brabant", park:"Ruim", sterk:"Britse upperclass-luxe in de bossen; 18 suites; ceremonie binnen/buiten; knalfeest + overnachting.", zwak:"18 suites = ~36-40 gasten op locatie, rest hotel; golfresort-sfeer niet ieders smaak.", totaal:26000, priceType:"schatting", s:{bijz:8,gast:9,water:2,pk:6,log:8,weer:9}},
+  {id:"neercanne", naam:"Château Neercanne", plaats:"Maastricht (Limburg)", land:"NL", web:"neercanne.com", url:"https://www.neercanne.com/", img:"https://oostwegel.ams3.cdn.digitaloceanspaces.com/optimized/website/containers/images/neercanne/exterior/autumn/20221101---chateau-neercane---%28c%29-chantal-arnts--2.jpg/eca2c760e9f021db9de69dad9a8e77b6/20221101---chateau-neercane---%28c%29-chantal-arnts--2.jpg", type:"Terrassenkasteel + wijngaard", water:"nee", waterTxt:"Wijngaard, baroktuin, mergelgrot", cap:"tot ±120", sleep:"nee", pool:0, weekend:0, excl:"Ruimtes los te huren", cat:"in huis (sterrenniveau)", overnacht:"7 luxe suites (sinds 2024)", slecht:"Chique salons + gewelven binnen", bereik:"Auto, Zuid-Limburg", park:"Aanwezig", sterk:"Spectaculairste kasteel van NL: terrassen, wijngaard, mergelgrot, gastronomie op sterrenniveau — pure wow.", zwak:"Slechts 7 suites; premium prijs → budget onder druk; geen 80-overnachting.", totaal:28000, priceType:"schatting", s:{bijz:10,gast:10,water:2,pk:5,log:7,weer:9}},
+  {id:"bergsebossen", naam:"Buitenplaats de Bergse Bossen", plaats:"Utrechtse Heuvelrug", land:"NL", web:"bergsebossen.nl", url:"https://www.bergsebossen.nl/", img:"https://bergsebossen.yourhotelwebsite.com/upload/heading/image-700x700.jpg", type:"Buitenplaats in het bos", water:"nee", waterTxt:"Bos op de Heuvelrug", cap:"tot ±150", sleep:"ja80", pool:0, weekend:1, excl:"Deels/afhankelijk", cat:"all-in", overnacht:"65 comfortabele kamers — alle gasten kunnen blijven!", slecht:"Binnen + bos eromheen", bereik:"Auto, midden NL", park:"Ruim", sterk:"65 kamers: ALLE ~80 gasten kunnen blijven slapen + ontbijt. All-in aanpak, hidden gem in het bos. Perfect voor jullie weekend.", zwak:"Bos i.p.v. water; hotelmatig van karakter, minder 'privédomein'.", totaal:29500, priceType:"schatting", s:{bijz:8,gast:9,water:2,pk:6,log:9,weer:9}},
+  {id:"oetdoor", naam:"Oetdoor", plaats:"Oost-Nederland", land:"NL", web:"oetdoor.nl", url:"https://oetdoor.nl/trouwen/", img:"https://oetdoor.nl/wp-content/uploads/2025/01/Glinsterfotografie-10.Party-4-scaled.jpg", type:"Outdoor festival-domein", water:"nee", waterTxt:"Natuur / velden", cap:"tot ±120", sleep:"deels", pool:0, weekend:1, excl:"Ja (volledig, 3-daags)", cat:"eigen keuze deels", overnacht:"Op terrein (tenten/kamperen) mogelijk", slecht:"Vaste tent + binnenruimte", bereik:"Auto", park:"Ruim", sterk:"Exclusief 3-daags weekend (do-za of vr-zo), festivalsfeer, max 12 bruiloften/jaar. Locatiehuur vanaf €7.500-10.000 (bron).", zwak:"Overnachten in tenten/kamperen — niet luxe-hotelcomfort; versterkte muziek alleen buiten hoogzomer.", totaal:27000, priceType:"actueel", s:{bijz:9,gast:8,water:2,pk:6,log:7,weer:8}},
+  {id:"nooren", naam:"Landgoed Nooren", plaats:"Zeeuwse kust", land:"NL", web:"landgoednooren.nl", url:"https://www.houseofweddings.com/nl/inspiratie-en-tips/inspiratie/leukste-feestzalen-ook-overnachten", img:"https://www.landgoednooren.com/wp-content/uploads/2022/08/PBF0116.jpg", type:"Privé-landgoed bij duinen", water:"aan", waterTxt:"Bij duinen & strand (Zeeland)", cap:"tot ±70", sleep:"deels", pool:0, weekend:1, excl:"Ja (privédomein)", cat:"in huis", overnacht:"8 luxe suites", slecht:"Sfeervolle zaal binnen", bereik:"Auto, Zeeland", park:"Op domein", sterk:"Exclusief privédomein bij duinen/strand, 8 suites, alles op 1 plek, rust & stijl.", zwak:"Tuin tot 70 gasten (80 krap); 8 suites; verder rijden.", totaal:24000, priceType:"schatting", s:{bijz:8,gast:8,water:6,pk:7,log:7,weer:7}},
+  {id:"essenburgh", naam:"Kasteel De Essenburgh", plaats:"Hierden (Gelderland)", land:"NL", web:"essenburgh.com", url:"https://www.essenburgh.com/", img:"https://www.essenburgh.com/wp-content/uploads/2022/05/Werken-bij-Essenburgh-foto-1-scaled.jpg", type:"Kasteelhotel", water:"nee", waterTxt:"Landgoed & bos", cap:"tot ±120", sleep:"deels", pool:0, weekend:1, excl:"Deels", cat:"in huis", overnacht:"Kasteelhotel — kamers op locatie", slecht:"Sfeervolle kasteelzalen binnen", bereik:"Auto, Veluwe", park:"Ruim", sterk:"Diner, dansfeest én overnachting onder één dak; romantische kasteelsfeer.", zwak:"Kamercapaciteit < 80; hotelmatig.", totaal:25000, priceType:"schatting", s:{bijz:8,gast:8,water:2,pk:6,log:8,weer:9}},
+  {id:"engelenburg", naam:"Kasteel Engelenburg", plaats:"Brummen (Gelderland)", land:"NL", web:"engelenburg.com", url:"https://www.engelenburg.com/", img:"https://engelenburg.com/wp-content/uploads/2023/10/Schermafbeelding-2023-10-04-om-13.06.12-e1696425686452-1-1024x566.png", type:"Kasteelhotel + golf", water:"aan", waterTxt:"Slotgracht & landgoed", cap:"tot ±100", sleep:"deels", pool:0, weekend:1, excl:"Deels", cat:"in huis", overnacht:"Kasteelhotel — luxe kamers", slecht:"Historische zalen binnen", bereik:"Auto, Gelderland", park:"Ruim", sterk:"Kasteel met slotgracht, luxe hotel op locatie, alles onder één dak, chic.", zwak:"Kamers < 80; premium prijs.", totaal:25500, priceType:"schatting", s:{bijz:8,gast:8,water:6,pk:6,log:8,weer:9}},
+  {id:"marienwaerdt", naam:"Landgoed Mariënwaerdt", plaats:"Beesd (Gelderland)", land:"NL", web:"marienwaerdt.nl", url:"https://www.marienwaerdt.nl/", img:"https://www.marienwaerdt.nl/wp-content/uploads/2025/01/Heerlijkheid-Marienwaerdt-4-van-282-1-600x400.jpg", type:"Historisch landgoed", water:"nee", waterTxt:"Landgoed, beuken, boomgaard", cap:"tot ±150", sleep:"deels", pool:0, weekend:1, excl:"Deels (meerdere ruimtes)", cat:"stylingpakket + catering", overnacht:"Accommodatie op landgoed", slecht:"Koetshuis / 't Klooster / Grote Huis binnen", bereik:"Auto, midden NL (A2)", park:"Ruim", sterk:"Eeuwenoud landgoed rond 't Klooster; buiten trouwen onder eeuwenoude beuken of in Franse boomgaard.", zwak:"Overnachting beperkt in aantal; styling/catering kan oplopen.", totaal:24000, priceType:"schatting", s:{bijz:8,gast:8,water:2,pk:7,log:8,weer:8}},
+  {id:"slotzuylen", naam:"Slot Zuylen", plaats:"Oud-Zuilen (Utrecht)", land:"NL", web:"slotzuylen.nl", url:"https://slotzuylen.nl/", img:"https://slotzuylen.nl/wp-content/uploads/2026/07/IMG_2252-scaled.jpg", type:"Middeleeuws slot aan de Vecht", water:"aan", waterTxt:"Aan de Vecht", cap:"tot ±80", sleep:"nee", pool:0, weekend:0, excl:"Zalen los", cat:"via partner", overnacht:"Nee (hotels Utrecht)", slecht:"Gobelinzaal / stijlzalen binnen", bereik:"Auto, bij Utrecht", park:"Beperkt", sterk:"Betoverend slot aan de Vecht met historische tuinen; Gobelinzaal-ceremonie; zeer bijzonder.", zwak:"Geen overnachting; capaciteit ~80 max; monument = beperkingen.", totaal:23000, priceType:"schatting", s:{bijz:9,gast:8,water:6,pk:6,log:6,weer:8}},
+  {id:"dehaar", naam:"Kasteel de Haar", plaats:"Haarzuilens (Utrecht)", land:"NL", web:"kasteeldehaar.nl", url:"https://www.kasteeldehaar.nl/", img:"https://www.kasteeldehaar.nl/wp-content/uploads/2022/11/DJI_0222.jpg", type:"Grootste kasteel van NL", water:"aan", waterTxt:"Grachten & sprookjespark", cap:"maatwerk", sleep:"nee", pool:0, weekend:0, excl:"Ceremonie/delen", cat:"exclusieve partners", overnacht:"Nee (hotels omgeving)", slecht:"Grote hal & zalen binnen", bereik:"Auto, bij Utrecht", park:"Aanwezig", sterk:"Grootste & meest luxueuze kasteel van NL — sprookjesdecor met grachten, ongeëvenaarde grandeur.", zwak:"Zeer prijzig, strak gereguleerd monument, geen overnachting.", totaal:30000, priceType:"schatting", s:{bijz:10,gast:9,water:6,pk:3,log:6,weer:9}},
+  {id:"parcbroekhuizen", naam:"Parc Broekhuizen", plaats:"Leersum (Utrecht)", land:"NL", web:"parcbroekhuizen.nl", url:"https://www.parcbroekhuizen.nl/", img:"https://parcbroekhuizen.nl/wp-content/uploads/2024/08/dymph-michiel-final2.jpg", type:"Landgoed-hotel & spa", water:"nee", waterTxt:"Landgoed op de Heuvelrug", cap:"tot ±120", sleep:"deels", pool:1, weekend:1, excl:"Deels", cat:"in huis (fine dining)", overnacht:"Boutique-hotelkamers + spa", slecht:"Orangerie / landhuis binnen", bereik:"Auto, Utrechtse Heuvelrug", park:"Ruim", sterk:"Sprookjesachtig landgoed-hotel met spa & zwembad; fine dining; luxe overnachting. Wow + wellness.", zwak:"Kamers < 80; hoog prijssegment.", totaal:29000, priceType:"schatting", s:{bijz:9,gast:9,water:2,pk:5,log:8,weer:9}},
+  {id:"heerstaayen", naam:"Domaine d'Heerstaayen", plaats:"Strijbeek (NB)", land:"NL", web:"heerstaayen.nl", url:"https://www.heerstaayen.nl/", img:"", type:"Wijndomein + orangerie/kas", water:"nee", waterTxt:"Wijngaard & bos", cap:"tot ±100", sleep:"deels", pool:0, weekend:1, excl:"Ja (privédomein)", cat:"in huis", overnacht:"Accommodatie op domein", slecht:"Orangerie & kas binnen", bereik:"Auto, bij Belgische grens", park:"Ruim", sterk:"Brabants wijnsprookje: lunch in de kas, ja-woord in de orangerie, toost in de boomgaard.", zwak:"Overnachting beperkt; wijngaard-sfeer niet ieders ding.", totaal:23500, priceType:"schatting", s:{bijz:8,gast:8,water:2,pk:7,log:7,weer:8}},
+  {id:"kastanjehof", naam:"De Kastanjehof", plaats:"Lage Vuursche (Utrecht)", land:"NL", web:"kastanjehof.nl", url:"https://www.kastanjehof.nl/", img:"", type:"Boetiekhotel in het bos", water:"nee", waterTxt:"Bos van Lage Vuursche", cap:"tot ±80", sleep:"deels", pool:0, weekend:1, excl:"Deels", cat:"in huis", overnacht:"Boetiekhotelkamers", slecht:"Sfeervol restaurant + overdekt terras", bereik:"Auto, bij Baarn", park:"Aanwezig", sterk:"Intiem boetiekhotel met karakter; alles op 1 plek; kaarslicht-romantiek het hele jaar.", zwak:"Klein — 80 gasten is bovengrens; kamers < 80.", totaal:23000, priceType:"schatting", s:{bijz:8,gast:8,water:2,pk:7,log:8,weer:9}},
+  {id:"elswout", naam:"Orangerie Elswout", plaats:"Overveen (NH)", land:"NL", web:"orangerie-elswout.nl", url:"https://www.orangerie-elswout.nl/", img:"https://www.orangerie-elswout.nl/wp-content/uploads/2025/03/home.jpg", type:"Orangerie op landgoed", water:"nee", waterTxt:"Landgoed bij de duinen", cap:"tot ±120", sleep:"nee", pool:0, weekend:0, excl:"Ja", cat:"eigen keukenbrigade", overnacht:"Nee (ontbijt volgende ochtend wel)", slecht:"Orangerie (veel glas) binnen", bereik:"Auto, bij Haarlem", park:"Aanwezig", sterk:"Officiele trouwlocatie, complete dag in lichte orangerie op landgoed + vorstelijk ontbijt de dag erna.", zwak:"Geen overnachting op locatie.", totaal:22500, priceType:"schatting", s:{bijz:8,gast:8,water:2,pk:7,log:7,weer:9}},
+  {id:"brandaris", naam:"Vuurtoren Brandaris", plaats:"Terschelling", land:"NL", web:"islandevents.nl", url:"https://islandevents.nl/trouwen-op-de-wadden/", img:"https://islandevents.nl/wp-content/uploads/sites/13/2025/04/EmmaRuben-online-281-2.jpg", type:"Vuurtoren (Wadden)", water:"aan", waterTxt:"Op het Wad, oudste werkende vuurtoren NL", cap:"zeer klein (ceremonie)", sleep:"nee", pool:0, weekend:0, excl:"Ja (niet toegankelijk voor toeristen)", cat:"elders op eiland", overnacht:"Op eiland (hotels/huisjes)", slecht:"Alternatief: Doopsgezinde Kerk / raadszaal", bereik:"Veerboot naar Terschelling", park:"Op vasteland", sterk:"Trouwen in de eeuwenoude Brandaris — het boegbeeld van Terschelling, niet voor toeristen. Unieke eilandbeleving.", zwak:"Ceremonieplek zeer klein; feest/diner elders; veerboot-logistiek.", totaal:24000, priceType:"schatting", s:{bijz:10,gast:9,water:9,pk:5,log:4,weer:6}},
+  {id:"stayokayter", naam:"Stayokay Terschelling", plaats:"Terschelling", land:"NL", web:"stayokay.com", url:"https://www.stayokay.com/nl/hostel/terschelling/trouwen", img:"https://www.stayokay.com/system/hostel_detail_pages/images/000/000/046/large/terschelling-trouwen.jpg?1633364154", type:"Hostel met wadzicht", water:"aan", waterTxt:"Uitzicht over zee & Wad", cap:"tot ±120", sleep:"ja80", pool:0, weekend:1, excl:"Bij min. 100 verblijvers", cat:"in huis (ontbijt-diner)", overnacht:"Veel bedden op locatie — hele groep kan blijven", slecht:"Bar & binnenruimte", bereik:"Veerboot Terschelling", park:"Op vasteland", sterk:"Hele groep slaapt op locatie met wadzicht; feestavond in de bar (min. 100 verblijvers); eilandweekend compleet.", zwak:"Hostel-comfort (geen luxe suites); veerboot-logistiek; min. verblijvers-eis.", totaal:26000, priceType:"schatting", s:{bijz:9,gast:9,water:9,pk:7,log:5,weer:7}},
+  {id:"texel", naam:"Strand/duinlocatie Texel", plaats:"Texel", land:"NL", web:"texel.net", url:"https://www.unieketrouwlocaties.nl/trouwen-op-de-wadden/", img:"https://d30zxdyvyx9rxk.cloudfront.net/library/Natuur/Strand/_1200xAUTO_crop_center-center_none/45504/Het-grote-strand-voor-de-vuurtoren_VVV-Texel_Richard-Heerschap.webp", type:"Strand-/duinlocatie (Wadden)", water:"aan", waterTxt:"Strand & duinen", cap:"maatwerk", sleep:"deels", pool:0, weekend:1, excl:"Vrije locatie aanvraagbaar", cat:"eiland-cateraars", overnacht:"Veel accommodatie op eiland", slecht:"Strandpaviljoen als back-up", bereik:"Korte veerboot (Den Helder)", park:"Op eiland", sterk:"Grootste Waddeneiland, best bereikbaar; ja-woord in duinen/op strand; veel verblijf voor gasten = eilandweekend.", zwak:"Gasten verspreid over accommodaties; weer-afhankelijk buiten.", totaal:24000, priceType:"schatting", s:{bijz:8,gast:9,water:9,pk:7,log:5,weer:6}},
+  {id:"vlieland", naam:"Reddinghuisje Vliehors", plaats:"Vlieland", land:"NL", web:"islandevents.nl", url:"https://islandevents.nl/trouwen-op-de-wadden/", img:"https://islandevents.nl/wp-content/uploads/sites/13/2025/04/EmmaRuben-online-281-2.jpg", type:"Reddinghuisje op de Vliehors", water:"aan", waterTxt:"Uiterste punt strandvlakte", cap:"zeer intiem", sleep:"deels", pool:0, weekend:1, excl:"Ja (afgelegen)", cat:"via eiland", overnacht:"Op eiland", slecht:"Podium Vlieland / Regentenkamer", bereik:"Veerboot Vlieland (autovrij)", park:"Geen auto op eiland", sterk:"Trouwen op het uiterste punt van de Vliehors tussen juthout — sprookjesachtig & afgelegen.", zwak:"Zeer intiem (kleine groep); autovrij eiland; logistiek pittig voor 80.", totaal:25000, priceType:"schatting", s:{bijz:10,gast:9,water:9,pk:5,log:3,weer:5}},
+  {id:"jemeppe", naam:"Château Jemeppe", plaats:"Ardennen (BE)", land:"BE", web:"chateaujemeppe.be", url:"https://www.houseofweddings.com/nl/inspiratie-en-tips/inspiratie/op-huwelijksweekend-hotspots-belgie", img:"https://www.chateaujemeppe.be/storage/2024/10/foto01-600x799.jpg", type:"Kasteel met slotgracht", water:"aan", waterTxt:"Kasteel omringd door slotgracht", cap:"tot ±150", sleep:"deels", pool:1, weekend:1, excl:"Ja (privédomein)", cat:"traiteur", overnacht:"Kamers op kasteel — uniek interieur", slecht:"13e-eeuwse zalen binnen", bereik:"Auto, ±1u van Brussel", park:"Ruim", sterk:"Sprookjeskasteel uit de 13e eeuw met slotgracht, zwembad & sauna; tussen conte de fées en garden party.", zwak:"Kamers < 80; reisafstand; premium.", totaal:27000, priceType:"schatting", s:{bijz:10,gast:9,water:7,pk:5,log:5,weer:8}},
+  {id:"cugnon", naam:"Château Thermes de Cugnon", plaats:"Cugnon, Ardennen (BE)", land:"BE", web:"kasteeldomein.com", url:"https://www.kasteeldomein.com/trouwfeest", img:"https://primary.jwwb.nl/public/n/z/h/temp-acsmqfoficfxmjkioioi/MarcoenPetra2-1.jpg", type:"Kasteel met thermen/zwembad", water:"nee", waterTxt:"Ardennen, bossen & park", cap:"15-60", sleep:"deels", pool:1, weekend:1, excl:"Ja (heel domein)", cat:"vrij / eigen", overnacht:"Luxe kamers — hele gezelschap kan blijven", slecht:"Thermenruimtes binnen", bereik:"Auto, Ardennen", park:"Ruim", sterk:"Weddingweekend-specialist: overdekt verwarmd zwembad, sauna, jacuzzi's, bruidssuite; heel domein privé.", zwak:"Feest tot ~60 (80 krap); reisafstand Ardennen.", totaal:25000, priceType:"schatting", s:{bijz:9,gast:9,water:3,pk:6,log:5,weer:9}},
+  {id:"deblier", naam:"Château De Blier", plaats:"Ardennen (BE)", land:"BE", web:"chateaudeblier.be", url:"https://bruiloftinspiratie.nl/trouwlocatie-kasteel/", img:"https://bruiloftinspiratie.nl/wp-content/uploads/2021/02/Karina-Maks.jpg", type:"Kasteel (groot + klein)", water:"nee", waterTxt:"Rustige Ardennen-omgeving", cap:"tot ±80", sleep:"deels", pool:0, weekend:1, excl:"Ja (beide kastelen samen)", cat:"vrij", overnacht:"62 gasten kunnen overnachten", slecht:"Kasteelzalen binnen", bereik:"Auto, Ardennen", park:"Ruim", sterk:"Twee kastelen samen te huren: tot 62 gasten overnachten — dicht bij jullie 80-wens; rustige natuur.", zwak:"62 < 80 (aanvullen met tenten/nabij); reisafstand.", totaal:25500, priceType:"schatting", s:{bijz:9,gast:8,water:2,pk:6,log:5,weer:8}},
+  {id:"balmoral", naam:"Château de Balmoral", plaats:"Spa (BE)", land:"BE", web:"chateaudebalmoral.be", url:"https://bruiloftinspiratie.nl/trouwlocatie-kasteel/", img:"https://bruiloftinspiratie.nl/wp-content/uploads/2021/02/Karina-Maks.jpg", type:"Sprookjeskasteel met zwembad", water:"nee", waterTxt:"Uitzicht over Spa, heuvels", cap:"klein/select", sleep:"nee", pool:1, weekend:1, excl:"Ja", cat:"vrij", overnacht:"Select gezelschap kan blijven", slecht:"Kasteel binnen", bereik:"Auto, bij Spa", park:"Aanwezig", sterk:"Meest sprookjesachtige kasteeltje, waanzinnig uitzicht + zwembad; extra bijzonder juist door kleinschaligheid.", zwak:"Slechts zeer select gezelschap kan slapen — niet voor 80 verblijvers.", totaal:24000, priceType:"schatting", s:{bijz:9,gast:8,water:2,pk:6,log:5,weer:8}},
+  {id:"martinus", naam:"Domein Martinus", plaats:"Antwerpen (BE)", land:"BE", web:"domeinmartinus.be", url:"https://www.houseofweddings.com/nl/inspiratie-en-tips/inspiratie/op-huwelijksweekend-hotspots-belgie", img:"https://www.domeinmartinus.be/wp-content/uploads/DomeinMartinusweb-60-e1738913731515-480x911.webp", type:"Groen feestdomein", water:"nee", waterTxt:"Groene velden", cap:"tot ±150", sleep:"deels", pool:0, weekend:1, excl:"Ja", cat:"in huis", overnacht:"Glamping in maïsvelden + ontbijt", slecht:"Feestzaal binnen", bereik:"Auto, prov. Antwerpen", park:"Ruim", sterk:"Weekendbruiloft met glamping tussen de maïsvelden; ontwaken in de natuur + lokaal ontbijt.", zwak:"Glamping = geen luxe kamers; sfeer boven comfort.", totaal:24000, priceType:"schatting", s:{bijz:8,gast:8,water:2,pk:7,log:6,weer:7}},
+  {id:"auberge", naam:"Auberge du Pêcheur", plaats:"Sint-Martens-Latem (BE)", land:"BE", web:"auberge-du-pecheur.be", url:"https://www.houseofweddings.com/nl/inspiratie-en-tips/inspiratie/op-huwelijksweekend-hotspots-belgie", img:"https://le-de.cdn-website.com/040fd274323b4fbe9a4f92fb6ec7a411/dms3rep/multi/opt/COMFORTROOM02-4f54988f-1920w.jpg", type:"Hotel-restaurant aan de Leie", water:"aan", waterTxt:"Aan de oevers van de Leie", cap:"tot ±150", sleep:"deels", pool:0, weekend:1, excl:"Zalen", cat:"in huis (gastronomie)", overnacht:"32 hotelkamers", slecht:"Orangerie / zaal Delvaux binnen", bereik:"Auto, bij Gent", park:"Ruim", sterk:"Aan het water (Leie), elegante Orangerie, 32 hotelkamers = flink deel gasten blijft slapen; gastronomisch.", zwak:"32 kamers < 80; hotelmatig.", totaal:25000, priceType:"schatting", s:{bijz:8,gast:8,water:7,pk:6,log:7,weer:8}},
+  {id:"hulsterlo", naam:"Hulsterlo Hoeve", plaats:"Damme (West-Vl., BE)", land:"BE", web:"hulsterlo.be", url:"https://www.houseofweddings.com/nl/inspiratie-en-tips/inspiratie/hoeves-feestzaal-west-vlaanderen", img:"", type:"17e-eeuwse hoeve", water:"nee", waterTxt:"7 ha natuur, tuin, zonsondergang", cap:"tot ±250", sleep:"deels", pool:0, weekend:1, excl:"Ja", cat:"in huis", overnacht:"Op/nabij domein", slecht:"Gerestaureerde schuur (1850) binnen", bereik:"Auto, bij Brugge/Knokke", park:"Ruim", sterk:"Sfeervolle 17e-eeuwse hoeve tussen 7 ha natuur, prachtige zonsondergang; bij Brugge.", zwak:"Overnachting beperkt in aantal; boerderij-sfeer.", totaal:22500, priceType:"schatting", s:{bijz:8,gast:8,water:2,pk:7,log:7,weer:8}},
+  {id:"loweide", naam:"Loweide", plaats:"Oostkamp (West-Vl., BE)", land:"BE", web:"loweide.be", url:"https://www.houseofweddings.com/nl/inspiratie-en-tips/inspiratie/hoeves-feestzaal-west-vlaanderen", img:"https://www.loweide.be/OG_loweide.jpg", type:"18e-eeuwse hoeve, exclusief", water:"nee", waterTxt:"2 ha tuinen, stilte", cap:"tot ±120", sleep:"deels", pool:0, weekend:1, excl:"Ja (heel domein, heel weekend)", cat:"chef op maat", overnacht:"Op domein — hele huwelijksweekend", slecht:"Karaktervolle ruimtes binnen", bereik:"Auto, bij Brugge", park:"Ruim", sterk:"Volledig domein exclusief voor een héél huwelijksweekend; in-house weddingplanner; 2 ha tuinen; stijl & stilte.", zwak:"Aantal slaapplaatsen beperkt; premium; ver voor NL-gasten.", totaal:27000, priceType:"schatting", s:{bijz:9,gast:9,water:2,pk:6,log:6,weer:8}},
+  {id:"urspelt", naam:"Château d'Urspelt", plaats:"Urspelt (LU)", land:"LU", web:"chateau-urspelt.lu", url:"https://www.chateau-urspelt.lu/", img:"https://www.chateau-urspelt.lu/wp-content/uploads/2021/10/urspelt-fb-share.jpg", type:"Kasteelhotel", water:"nee", waterTxt:"Noord-Luxemburgse natuur", cap:"tot ±150", sleep:"ja80", pool:1, weekend:1, excl:"Ja (kasteelhotel)", cat:"in huis", overnacht:"55+ kamers/suites — hele groep kan blijven!", slecht:"Historische zalen binnen", bereik:"Auto, Noord-Luxemburg", park:"Ruim", sterk:"Kasteelhotel met tientallen kamers: ALLE ~80 gasten kunnen blijven + wellness/zwembad. Ideaal voor jullie weekend.", zwak:"Reisafstand (±3-3,5u v/a Randstad); premium prijs.", totaal:29500, priceType:"schatting", s:{bijz:9,gast:9,water:2,pk:5,log:5,weer:9}},
+  {id:"gaichel", naam:"Domaine de la Gaichel", plaats:"Eischen (LU/BE-grens)", land:"LU", web:"lagaichel.lu", url:"https://www.weddings-in-luxembourg.com/post/best-wedding-venues-in-and-around-luxembourg", img:"https://www.lagaichel.lu/public/images/web/DSC_2126.jpg", type:"Landgoed met gîtes", water:"nee", waterTxt:"Luxemburgs platteland", cap:"15-80 (meer met tent)", sleep:"deels", pool:0, weekend:1, excl:"Ja", cat:"gastronomie in huis", overnacht:"Privé-gîtes/hotel op landgoed", slecht:"Elegante zalen binnen", bereik:"Auto, 25 km v/a Luxemburg-stad", park:"Ruim", sterk:"Idyllisch landgoed met charmante tuinen & privé-cottages; gastronomie & luxe; 15-80 gasten.", zwak:"Reisafstand; 80 = bovengrens (tent nodig voor meer).", totaal:27000, priceType:"schatting", s:{bijz:8,gast:9,water:2,pk:6,log:5,weer:8}},
+  {id:"bourglinster", naam:"Château de Bourglinster", plaats:"Bourglinster (LU)", land:"LU", web:"bourglinster.lu", url:"https://www.weddings-in-luxembourg.com/post/best-wedding-venues-in-and-around-luxembourg", img:"https://www.bourglinster.lu/wp-content/uploads/2019/07/chateau_bourglinster_restaurant5.jpg", type:"Historisch kasteel + binnenplaats", water:"nee", waterTxt:"Naturpark Our, dorpshart", cap:"tot ±150", sleep:"nee", pool:0, weekend:0, excl:"Zalen + binnenplaats", cat:"restaurants op kasteel", overnacht:"Nabij in dorp/regio", slecht:"Historische salons binnen", bereik:"Auto, midden-Luxemburg", park:"In dorp", sterk:"Droomhuwelijk in historische salons + kasteelbinnenplaats; charme & elegantie in Naturpark Our.", zwak:"Geen overnachting op kasteel; reisafstand.", totaal:24000, priceType:"schatting", s:{bijz:9,gast:8,water:2,pk:6,log:6,weer:8}},
+  {id:"mondorf", naam:"L'Orangerie – Mondorf Domaine Thermal", plaats:"Mondorf-les-Bains (LU)", land:"LU", web:"mondorf.lu", url:"https://thepartyville.com/2023/10/01/venues-to-get-married-in-luxembourg-our-favorites/", img:"https://www.mondorf.lu/media/cache-image-style/scale_small/NjAwXzYwMF8xXzkwXw/contentmanager/content/WF_Odyssee-couple_illu_974x647.jpg", type:"Orangerie op thermendomein", water:"nee", waterTxt:"Kuurpark met spa", cap:"tot ±150", sleep:"ja80", pool:1, weekend:1, excl:"Orangerie", cat:"in huis", overnacht:"Hotel op domein — gasten kunnen blijven", slecht:"Lichte orangerie binnen", bereik:"Auto, Z-Luxemburg (bij DE/FR)", park:"Ruim", sterk:"Elegante orangerie in groot kuurpark; gasten genieten van spa, sauna & zwembad + hotel op domein.", zwak:"Reisafstand; klassiek-chic (niet 'anders dan anders' voor iedereen).", totaal:28000, priceType:"schatting", s:{bijz:8,gast:9,water:2,pk:5,log:6,weer:9}},
+  {id:"vianden", naam:"Château de Vianden", plaats:"Vianden (LU)", land:"LU", web:"castle-vianden.lu", url:"https://theweddingville.com/tag/venues-luxembourg/", img:"https://theweddingville.com/wp-content/uploads/2018/06/cropped-5b1a34796b8d4_thumb900-e1528447379744.jpg?w=200", type:"Middeleeuws bergkasteel", water:"nee", waterTxt:"Op een heuvel boven Vianden", cap:"maatwerk", sleep:"nee", pool:0, weekend:0, excl:"Delen", cat:"via partners", overnacht:"Hotels in Vianden", slecht:"Historische kasteelzalen binnen", bereik:"Auto, N-Luxemburg", park:"In stadje", sterk:"Adembenemend middeleeuws bergkasteel — een sprookjesdecor als geen ander; historisch & romantisch.", zwak:"Monument met beperkingen; geen overnachting op kasteel; ver.", totaal:26000, priceType:"schatting", s:{bijz:10,gast:9,water:2,pk:4,log:5,weer:8}},
+  {id:"lievelinge", naam:"Camping de Lievelinge", plaats:"Rivierengebied (NL)", land:"NL", web:"lievelinge.nl", url:"https://www.bartsboekje.com/unieke-trouwlocaties-in-nederland/", img:"https://lievelinge.nl/wp-content/uploads/2022/01/thumbDJI_0056-crop-1024x570.jpg", type:"Bijzondere (glamping)camping", water:"aan", waterTxt:"Aan het water in het groen", cap:"tot ±120", sleep:"ja80", pool:0, weekend:1, excl:"Ja (heel terrein)", cat:"eigen/vrij", overnacht:"Iedereen kan kamperen/glampen op terrein", slecht:"Vaste tent/schuur", bereik:"Auto, rivierengebied", park:"Ruim", sterk:"Heel terrein exclusief; ALLE gasten blijven slapen (tent/glamping); DIY-festivalbruiloft, vrij in te richten.", zwak:"Kamperen = basaal comfort; weer-afhankelijk; DIY = meer zelf regelen.", totaal:23000, priceType:"schatting", s:{bijz:8,gast:8,water:6,pk:8,log:6,weer:7}},
+  {id:"altenbroek", naam:"Landgoed Altenbroek", plaats:"Voeren (BE, bij Maastricht)", land:"BE", web:"altembrouck.be", url:"https://www.unieketrouwlocaties.nl/locatie/landgoed-altenbroek/", img:"https://www.venueimages.com/cdn-cgi/image/width=1280,format=auto,quality=85/media/ttgjkzlu/bruiloft-kamsteeg-177.jpg", type:"Kasteelhoeve + landgoedhotel", water:"aan", waterTxt:"20 ha landgoed met 3 vijvers & bronnen", cap:"50-200", sleep:"ja80", pool:0, weekend:1, excl:"Ja (volledig af te huren)", cat:"in huis (Frans/Wagyu, top)", overnacht:"±57 kamers → 124 gasten kunnen slapen", slecht:"Karaktervolle salons + feesttent", bereik:"Auto, 20 min v/a Maastricht", park:"Ruim op domein", sterk:"Jullie referentie: 14e-eeuwse kasteelhoeve op 20 ha met vijvers, vergeleken met Zuid-Frankrijk/Italië. Alle ~80 gasten slapen op het domein, excellente Franse keuken, volledige privacy bij exclusieve afhuur.", zwak:"Premium prijs bij exclusieve afhuur + slapen; net over de grens (maar dicht bij Maastricht).", totaal:30000, priceType:"schatting", s:{bijz:10,gast:10,water:7,pk:5,log:6,weer:9}},
+  {id:"rhederoord", naam:"Landgoed Rhederoord", plaats:"De Steeg (Gelderland)", land:"NL", web:"rhederoord.nl", url:"https://www.rhederoord.nl/trouwen", img:"https://www.rhederoord.nl/wp-content/uploads/2019/08/max6-2.jpg", type:"Statig landhuis-landgoed", water:"nee", waterTxt:"12 ha park, uitzicht IJsselvallei/Veluwezoom", cap:"tot ±300", sleep:"deels", pool:0, weekend:1, excl:"Deels/afhankelijk", cat:"in huis (biologisch/lokaal)", overnacht:"Kamers in landhuis + koetshuis (deel gasten)", slecht:"Diverse sfeervolle zalen binnen", bereik:"Auto, A12/A50 bij Arnhem", park:"Ruim", sterk:"Jullie referentie: statig landhuis op 12 ha aan de rand van de Veluwe; ceremonie op het bordes onder de rode beuk, complete bruiloft van ja-woord t/m ontbijt op 1 plek. Green Key Gold (duurzaam).", zwak:"Kamers voor een deel van de gasten (niet alle 80); kan druk zijn (meerdere events).", totaal:24000, priceType:"schatting", s:{bijz:8,gast:9,water:2,pk:7,log:8,weer:9}},
+  {id:"florabatava", naam:"Hotel Flora Batava", plaats:"Nieuwersluis a/d Vecht (NL)", land:"NL", web:"florabatava.com", url:"https://florabatava.com/meetings-events/bruiloften/", img:"https://florabatava.com/wp-content/uploads/2025/05/IMG_1038-2-hor-886x620.jpg", type:"Buitenplaats-hotel aan de Vecht", water:"aan", waterTxt:"Aan de Vecht, historische Vijverhof met oranjerie", cap:"10-120", sleep:"ja80", pool:0, weekend:1, excl:"Deels (villa/serre/theehuis)", cat:"in huis (restaurant Bloei)", overnacht:"45 kamers + 2 hotels op 5 min", slecht:"Villa, serre & rijksmonument binnen", bereik:"Auto/OV, tussen Amsterdam & Utrecht", park:"70 gratis plekken", sterk:"Jullie referentie: idyllische buitenplaats aan de Vecht (17e-eeuwse botanische historie 'Flora Batava'), ceremonie in theehuis aan het water, aankomst per sloep, 45 kamers zodat gasten blijven + ontbijt.", zwak:"Zalen wat kleiner (tot ~120); voor alle 80 slapen deels bijboeken in 2 hotels nabij.", totaal:24500, priceType:"schatting", s:{bijz:9,gast:9,water:9,pk:7,log:8,weer:8}},
+  {id:"outpost", naam:"Outpost Zandvoort", plaats:"Zandvoort aan Zee (NL)", land:"NL", web:"outpostzandvoort.nl", url:"https://visitzandvoort.com/wedding/", img:"https://visitzandvoort.com/wp-content/uploads/2025/05/IrmyPhotography-432-of-679-1024x683.jpg", type:"Design-strandpaviljoen", water:"aan", waterTxt:"Direct aan zee, voeten in het zand", cap:"tot ±50", sleep:"nee", pool:0, weekend:0, excl:"Ja (hele locatie)", cat:"in huis", overnacht:"Nabij (Zandvoort hotels)", slecht:"Overdekt/binnen paviljoen", bereik:"Auto/OV (trein Zandvoort a/Zee)", park:"Nabij", sterk:"Jullie referentie: stijlvol, intiem strandpaviljoen — ja-woord met blote voeten in het zand, zonsondergang boven de Noordzee, design-uitstraling. 'Ibiza-gevoel' in eigen land.", zwak:"Klein: max ~50 gasten (te klein voor 80 zittend); geen overnachting; weer-afhankelijk.", totaal:22000, priceType:"schatting", s:{bijz:9,gast:9,water:10,pk:7,log:7,weer:6}},
+  {id:"lseven", naam:"L•Seven", plaats:"Boxtel (Noord-Brabant)", land:"NL", web:"lseven.nl", url:"https://www.lseven.nl/", img:"http://static1.squarespace.com/static/60d461e64ab96c060b0e0e8b/t/61f1f8b069d8f14e58cc2149/1643247798153/PCF_0332.jpeg?format=1500w", type:"Design-beachclub aan het water", water:"aan", waterTxt:"Aan het Leijsenven, terrassen tot waterrand", cap:"tot ±200", sleep:"nee", pool:0, weekend:0, excl:"Ruimtes (The Dome / Greenroom)", cat:"in huis (seizoen, fine dining)", overnacht:"Boutiquehotels nabij (Leijhof e.a.)", slecht:"The Dome (13×13m) + Greenroom binnen", bereik:"Auto, bij Boxtel/Den Bosch", park:"Ruim", sterk:"Jullie referentie: luxe design-beachclub (2022) aan het water met The Dome; ceremonie aan het water, feest met hypermoderne AV, stijlvolle 'beachclub-allure' in het groene Brabant.", zwak:"Geen overnachting op locatie (wel boutiquehotels nabij); modern i.p.v. historisch.", totaal:24000, priceType:"schatting", s:{bijz:8,gast:9,water:8,pk:7,log:8,weer:8}},
+  {id:"heerlijckyt", naam:"De Heerlijckyt van Elsmeren", plaats:"Geetbets (Vlaams-Brabant, BE)", land:"BE", web:"heerlijckyt.be", url:"https://www.dnls.be/nl/locatie/de-heerlijckyt-van-elsmeren-geetbets/trouwen", img:"https://static.dnls.nl/uploads/2/372610/6JUYRyo0cu0/Feest17_1.jpg", type:"Gerestaureerd kasteeldomein", water:"aan", waterTxt:"30 ha park met vijvers, weilanden, oude bomen", cap:"tot ±150", sleep:"deels", pool:0, weekend:1, excl:"Ja (domein voor meerdaags verblijf)", cat:"traiteur/eigen keuze", overnacht:"Kasteel + verblijven op domein", slecht:"7 karaktervolle ruimtes binnen", bereik:"Auto, grens Vlaams-Brabant/Limburg", park:"Ruim", sterk:"Jullie referentie: eeuwenoud, volledig gerestaureerd kasteeldomein op 30 ha groen met vijvers en trouwboom; dé plek voor een bohemian weekendbruiloft waar (een groot deel van) de gasten blijft slapen.", zwak:"Niet álle 80 op kasteel (deel in verblijven/tenten); zomers muggen bij de vijver.", totaal:26000, priceType:"schatting", s:{bijz:9,gast:9,water:7,pk:6,log:6,weer:8}},
+  {id:"wolfslaar", naam:"Landgoed Wolfslaar", plaats:"Breda (Noord-Brabant)", land:"NL", web:"wolfslaar.nl", url:"https://www.wolfslaar.nl/", img:"", type:"Landhuis met orangerie", water:"aan", waterTxt:"Landgoedpark met vijver & oude bomen", cap:"tot ±150", sleep:"nee", pool:0, weekend:0, excl:"Deels (orangerie/koetshuis)", cat:"in huis (fine dining)", overnacht:"Nabij (Breda)", slecht:"Sfeervolle orangerie (glas) binnen", bereik:"Auto, bij Breda", park:"Ruim", sterk:"Vergelijkbaar met Rhederoord/Wolfslaar-sfeer: chic landhuis met lichte orangerie in een parktuin met vijver; culinair sterk, stijlvol-groen.", zwak:"Geen overnachting op locatie; geen exclusieve slaapmogelijkheid.", totaal:23000, priceType:"schatting", s:{bijz:8,gast:8,water:6,pk:7,log:8,weer:8}},
+  {id:"mattemburgh", naam:"Landgoed Mattemburgh", plaats:"Hoogerheide (NB)", land:"NL", web:"mattemburgh.nl", url:"https://www.brabantslandschap.nl/", img:"https://www.brabantslandschap.nl/assets/Uploads/Soorten-sfeer/3__FillWzEyMDAsNjMwXQ.-Gewone-rolklaver.jpg", type:"Landgoed met orangerie & tuinen", water:"aan", waterTxt:"Historische tuinen, vijverpartijen", cap:"tot ±120", sleep:"nee", pool:0, weekend:0, excl:"Orangerie exclusief", cat:"via partners", overnacht:"Nabij", slecht:"Klassieke orangerie binnen", bereik:"Auto, West-Brabant", park:"Aanwezig", sterk:"Botanische parel à la Flora Batava: 19e-eeuwse orangerie in aangelegde landgoedtuinen met vijvers — romantisch en groen.", zwak:"Geen overnachting; beheer via landschapsstichting = meer regels.", totaal:21500, priceType:"schatting", s:{bijz:8,gast:8,water:6,pk:8,log:7,weer:8}},
+  {id:"deruwenberg", naam:"De Ruwenberg", plaats:"Sint-Michielsgestel (NB)", land:"NL", web:"ruwenberg.nl", url:"https://www.ruwenberg.nl/", img:"https://ruwenberg.nl/app/uploads/2023/03/Ruwenberg-zomer-rsz.jpg", type:"Kasteelachtig landgoedhotel", water:"nee", waterTxt:"Landgoed met parktuin", cap:"tot ±200", sleep:"ja80", pool:0, weekend:1, excl:"Deels", cat:"in huis", overnacht:"Landgoedhotel — ruime kamercapaciteit", slecht:"Statige zalen binnen", bereik:"Auto, bij Den Bosch/Boxtel", park:"Ruim", sterk:"Dicht bij L•Seven-regio maar mét overnachting: statig landgoedhotel waar (bijna) alle gasten kunnen blijven + ontbijt; alles op één plek.", zwak:"Hotelmatig/zakelijk karakter; minder 'verborgen pareltje'.", totaal:27000, priceType:"schatting", s:{bijz:7,gast:8,water:2,pk:6,log:9,weer:9}},
+  {id:"maurick", naam:"Kasteel Maurick", plaats:"Vught (NB)", land:"NL", web:"maurick.nl", url:"https://www.maurick.nl/", img:"https://upload.wikimedia.org/wikipedia/commons/1/1e/CastleMaurickVught.JPG", type:"Waterkasteel-hotel", water:"aan", waterTxt:"Kasteel omringd door water & bos", cap:"tot ±150", sleep:"deels", pool:0, weekend:1, excl:"Deels", cat:"in huis", overnacht:"Kasteelhotelkamers (deel gasten)", slecht:"Historische kasteelzalen binnen", bereik:"Auto, bij Den Bosch", park:"Ruim", sterk:"Sprookjesachtig waterkasteel omgeven door gracht en bos; ceremonie buiten aan het water, diner in historische zalen, hotel op locatie.", zwak:"Kamers voor een deel van de gasten; populair (drukte).", totaal:25500, priceType:"schatting", s:{bijz:9,gast:8,water:8,pk:6,log:8,weer:9}},
+  {id:"dehorst", naam:"Kasteel Heemstede", plaats:"Houten (Utrecht)", land:"NL", web:"kasteelheemstede.com", url:"https://www.kasteelheemstede.com/", img:"", type:"Grachtenkasteel (17e eeuw)", water:"aan", waterTxt:"Kasteel volledig omringd door slotgracht", cap:"tot ±150", sleep:"nee", pool:0, weekend:0, premium:1, excl:"Ja (exclusief kasteel)", cat:"in huis (gastronomisch)", overnacht:"Nabij (Utrecht/Houten)", slecht:"Barokke zalen binnen", bereik:"Auto, bij Utrecht", park:"Ruim", sterk:"Iets duurder, maar spectaculair: volledig omgracht barokkasteel; exclusieve afhuur, ceremonie op de binnenplaats, gastronomisch diner — pure grandeur.", zwak:"Geen overnachting; premium prijs; monument = beperkingen.", totaal:28500, priceType:"schatting", s:{bijz:10,gast:9,water:9,pk:5,log:7,weer:9}},
+  {id:"oldruitenborgh", naam:"Kasteel Oldruitenborgh", plaats:"Vollenhove (Overijssel)", land:"NL", web:"oldruitenborgh.com", url:"https://www.oldruitenborgh.com/", img:"", type:"Kasteelhotel met park", water:"aan", waterTxt:"Grachten & landgoedpark", cap:"tot ±120", sleep:"deels", pool:0, weekend:1, premium:1, excl:"Deels", cat:"in huis (fine dining)", overnacht:"Kasteelhotelkamers", slecht:"Historische zalen binnen", bereik:"Auto, kop van Overijssel", park:"Ruim", sterk:"Iets hoger budget: intiem kasteelhotel met grachten en park; overnachten in stijl, gastronomisch, romantisch en rustig gelegen.", zwak:"Kamers < 80 (deel bijboeken); wat afgelegen.", totaal:27500, priceType:"schatting", s:{bijz:9,gast:9,water:7,pk:6,log:6,weer:9}},
+  {id:"dehooge", naam:"Kasteel De Hooge Vuursche", plaats:"Baarn (Utrecht)", land:"NL", web:"kasteeldehoogevuursche.nl", url:"https://www.kasteeldehoogevuursche.nl/", img:"https://www.hoogevuursche.nl/wp-content/uploads/2020/10/Bas-Uijlings-fotografie-019-e1603116281994.jpg", type:"Sprookjeskasteel in het bos", water:"nee", waterTxt:"Groot bospark, monumentale tuinen", cap:"tot ±150", sleep:"nee", pool:0, weekend:0, premium:1, excl:"Ja (exclusief)", cat:"in huis (klassiek-Frans)", overnacht:"Nabij (Baarn/Lage Vuursche)", slecht:"Grandioze kasteelzalen binnen", bereik:"Auto, midden NL", park:"Ruim", sterk:"Iets duurder: imposant sprookjeskasteel in de bossen bij Lage Vuursche; monumentale trappartij en tuinen — maximale wow op de foto's.", zwak:"Geen overnachting; hoog prijssegment; strak gereguleerd.", totaal:29000, priceType:"schatting", s:{bijz:10,gast:9,water:2,pk:5,log:7,weer:9}},
+  {id:"chateaustmichel", naam:"Château St-Gerlach", plaats:"Valkenburg (Limburg)", land:"NL", web:"chateauhotels.nl", url:"https://www.chateauhotels.nl/hotels/chateau-st-gerlach/", img:"", type:"Kasteeldomein & spa-hotel", water:"aan", waterTxt:"Landgoed met beek & historische tuinen", cap:"tot ±150", sleep:"ja80", pool:1, weekend:1, premium:1, excl:"Deels/afhankelijk", cat:"in huis (Michelin-niveau)", overnacht:"Luxe kasteelhotel + spa/zwembad — hele groep", slecht:"Barokke kapel & zalen binnen", bereik:"Auto, Zuid-Limburg", park:"Ruim", sterk:"Iets hoger budget maar top: iconisch kasteeldomein bij Valkenburg met Michelin-keuken, spa én zwembad; ruime kamercapaciteit zodat iedereen blijft — het complete luxe weekend.", zwak:"Duurste segment; €30k wordt dan krap → richting bovenkant premium.", totaal:32000, priceType:"schatting", s:{bijz:10,gast:10,water:6,pk:4,log:7,weer:9}},
+  {id:"lachartreuse", naam:"La Chartreuse du Val St-Esprit", plaats:"Gosnay (FR, bij BE-grens)", land:"BE", web:"lachartreuse.com", url:"https://www.lachartreuse.com/", img:"https://upload.wikimedia.org/wikipedia/commons/4/46/Chartreuse_des_Dames_de_Gosnay.JPG", type:"Kasteelhotel (voormalig klooster)", water:"aan", waterTxt:"Kasteel met waterpartijen & park", cap:"tot ±180", sleep:"ja80", pool:0, weekend:1, premium:1, excl:"Deels", cat:"in huis (gastronomisch)", overnacht:"Kasteelhotel — ruime kamercapaciteit", slecht:"Historische zalen binnen", bereik:"Auto, net over BE-grens (Frans-Vlaanderen)", park:"Ruim", sterk:"Iets duurder, échte bestemmingsbruiloft: statig kasteelhotel (oud kartuizerklooster) met park en waterpartijen; genoeg kamers voor het hele gezelschap, gastronomisch.", zwak:"Verste optie (Noord-Frankrijk); taal/logistiek; premium.", totaal:30500, priceType:"schatting", s:{bijz:9,gast:9,water:6,pk:5,log:5,weer:9}},
+  {id:"roodekoper", naam:"Hotel Landgoed Het Roode Koper", plaats:"Leuvenum/Ermelo (Veluwe)", land:"NL", web:"roodekoper.nl", url:"https://www.roodekoper.nl/nl/vieren/", img:"https://le-de.cdn-website.com/11f0b528337948ecae6be76ad23c54b6/dms3rep/multi/opt/13-aangezicht+villa+2023-1920w.jpg", type:"Monumentaal landgoedhotel", water:"nee", waterTxt:"3.000 ha Veluwebos, Engelse siertuinen & rozentuin", cap:"tot ±150", sleep:"deels", pool:1, weekend:1, premium:1, excl:"Ja (landgoed exclusief af te huren)", cat:"in huis (top, seizoen)", overnacht:"32 sfeervolle hotelkamers + champagne-ontbijt", slecht:"Sfeervolle vertrekken in de villa binnen", bereik:"Auto, Veluwe bij Ermelo/Harderwijk", park:"Ruim", sterk:"Idyllisch trouwen in stijl op een van de mooiste landgoedhotels van NL (1 Michelin Key): ceremonie in de geurende rozentuin, receptie bij het zwembad (The Poolhouse), diner in de siertuinen. Meerdaags mogelijk — huur het landgoed met 32 kamers exclusief af en sluit af met champagne-ontbijt.", zwak:"32 kamers = een groot deel maar niet alle 80 (rest nabij bijboeken); premium prijs bij exclusieve afhuur + verblijf.", totaal:29000, priceType:"schatting", s:{bijz:9,gast:10,water:2,pk:5,log:8,weer:9}},
+];
+
+const CONCEPTS = [
+  {naam:"Fort in de Waterlinie",pill:"Aanbevolen",pillClass:"good",
+   omschrijving:"Alles op één historisch forteiland omringd door een slotgracht. Ceremonie buiten op het eiland, borrel op het terras aan het water, diner onder de festivaltent, feest in het verlichte fort. Geen busjes, geen verplaatsingen.",
+   sfeer:"Robuust-romantisch: oude muren, riet, water, kaarslicht, groen.",
+   waarom:"Gasten voelen zich op een geheime plek, letterlijk omringd door water, maar met alle comfort en een gegarandeerd droog alternatief. Uniek zonder logistieke nachtmerrie.",
+   voor:["Op het water + natuur + uniek in één","Weerbestendig: vaste tent + binnenruimte","Alles op 1 plek = laagste vervoerskosten & stress","All-in prijs bekend en scherp"],
+   nadeel:["Geen overnachting op de meeste forteilanden","All-in = minder vrijheid in eigen leveranciers"],
+   kosten:"±€22.000–23.000",
+   risico:"Vaste-tent capaciteit checken voor 80. Oplossing: vroeg boeken + plattegrond opvragen.",
+   slecht:"Ingebouwd: ceremonie & diner schuiven naar wachthuis/vaste tent. Geen los weeralternatief nodig."},
+
+  {naam:"Ja-woord & Vaartocht",pill:"Avontuurlijk",pillClass:"warn",
+   omschrijving:"Ceremonie aan boord van een historisch zeilschip in een oude haven, gevolgd door een vaartocht met de gasten langs de kust/het IJsselmeer, en 's avonds diner + feest in een strandpaviljoen waar het schip aanlegt.",
+   sfeer:"Zilte zeelucht, hout en touw, wind in de zeilen, avontuur.",
+   waarom:"Letterlijk in het huwelijksbootje stappen. De vaartocht is een gedeelde belevenis die niemand vergeet — een 'reis' samen als kick-off van het huwelijk.",
+   voor:["Maximaal 'op het water'","Ceremonie + activiteit + vervoer in één","Spectaculaire foto's"],
+   nadeel:["Weer is een harde, niet te sturen factor","Twee locaties = dubbele logistiek","80 gasten + zittend diner aan boord is krap"],
+   kosten:"±€23.000–24.500",
+   risico:"Wind/golven → zeeziekte, vertraging, geannuleerde vaart. Oplossing: rustig binnenwater kiezen, korte vaart, back-up paviljoen dat sowieso vast staat.",
+   slecht:"Vaartocht vervalt bij windkracht > 5 of onweer; programma verschuift naar het paviljoen. Bootgeld deels verloren — dek af in contract."},
+
+  {naam:"Nazomer aan de Jachthaven",pill:"Budgetvriendelijk",pillClass:"reed",
+   omschrijving:"Een ontspannen bruiloft aan de rand van de Biesbosch of aan een groot meer: ceremonie op de steiger, lang tafelen met zicht op de boten en de ondergaande zon, feest in een paviljoen met overdekt terras. Begin september.",
+   sfeer:"Warm, gouden nazomerlicht, natuur, rust, kabbelend water.",
+   waarom:"Natuur en water zonder hoogseizoen-drukte of -toeslagen. Gasten kunnen aankomen per boot; de Biesbosch/het meer als achtergrond voelt weids en vrij.",
+   voor:["Laagste kosten van de drie","Natuur + water gecombineerd","September = rustiger + vaak stabiel weer + ruim parkeren"],
+   nadeel:["Iets minder 'wow' dan een fort of eiland","Kortere dagen in september (zon onder ±20:15)"],
+   kosten:"±€19.500–21.000",
+   risico:"Minder onderscheidend. Oplossing: investeer het uitgespaarde budget in styling, licht en het signature moment.",
+   slecht:"Overdekt terras + binnenruimte staan sowieso klaar; ceremonie schuift van steiger naar serre met zicht op het water."},
+];
+
+const DATES_A = [
+  {d:"za 22 mei 2027",t:"±18 °C",neer:"~40%",zon:"~7 u/dag",zon2:"21:36",voor:"Lange dagen, veel zon, buiten hoogseizoen → scherpere zaalprijs.",nadeel:"Kans op frisse avond; water nog koel.",bud:"Laagseizoen-tarief (gunstig)"},
+  {d:"za 5 jun 2027",t:"±19–20 °C",neer:"~40%",zon:"~7 u/dag",zon2:"21:57",voor:"Zoetste plek: zon, lange dagen, aangenaam, nét voor hoogseizoenpiek.",nadeel:"Begin van juni-onweerskans.",bud:"Rand hoogseizoen — nog schappelijk"},
+  {d:"za 12 jun 2027",t:"±20 °C",neer:"~40%",zon:"~7 u/dag",zon2:"22:02",voor:"Langste dagen van het jaar naderen; warme avonden.",nadeel:"Onweerskans juni; hoogseizoen begint.",bud:"Hoogseizoen-toeslag mogelijk"},
+  {d:"za 4 sep 2027",t:"±19 °C",neer:"~45%",zon:"~6 u/dag",zon2:"20:15",voor:"Nazomer: warm water, stabiel, rustiger agenda's leveranciers.",nadeel:"Kortere dag → eerder donker.",bud:"Naseizoen — vaak korting"},
+  {d:"za 11 sep 2027",t:"±18 °C",neer:"~45%",zon:"~6 u/dag",zon2:"20:00",voor:"Gouden nazomerlicht, minder drukte, prijsvriendelijk.",nadeel:"Weer wisselvalliger dan hoogzomer.",bud:"Naseizoen (gunstig)"},
+];
+const DATES_B = [
+  {d:"za 29 mei 2027",t:"±18 °C",neer:"~40%",zon:"~7 u/dag",zon2:"21:45",voor:"Vlak voor hoogseizoen, mooie lengte van de dag.",nadeel:"Pinksteren (15/16 mei) net voorbij — check agenda's.",bud:"Gunstig"},
+  {d:"za 19 jun 2027",t:"±20 °C",neer:"~40%",zon:"~7 u/dag",zon2:"22:04",voor:"Bijna langste dag, warme avonden.",nadeel:"Hoogseizoen + onweerspiek.",bud:"Toeslag"},
+  {d:"za 26 jun 2027",t:"±20 °C",neer:"~40%",zon:"~7 u/dag",zon2:"22:03",voor:"Volop zomer, lange lichte avonden.",nadeel:"Vlak voor zomervakantie Zuid; drukte.",bud:"Toeslag"},
+  {d:"za 28 aug 2027",t:"±20 °C",neer:"~45%",zon:"~6,5 u/dag",zon2:"20:31",voor:"Warm water, einde zomer, nog lange avond.",nadeel:"Kan warm zijn; vakantie loopt af.",bud:"Rand hoogseizoen"},
+  {d:"za 18 sep 2027",t:"±17 °C",neer:"~50%",zon:"~5,5 u/dag",zon2:"19:45",voor:"Rustig, prijsvriendelijk, sfeervol licht.",nadeel:"Meer regenkans, dag korter.",bud:"Naseizoen (gunstig)"},
+];
+const AVOID = [
+  {t:"Juli & augustus (hoogzomer)",r:"Hoogseizoen-toeslagen, schoolvakanties (NL/BE), gasten op reis, meer kans op hitte >30 °C — slecht voor pak, bloemen en oudere gasten."},
+  {t:"Meivakantie & Pinksteren (±1–16 mei)",r:"Gasten weg, leveranciers vol, reisdrukte. Ook: begin mei statistisch nog wisselvallig."},
+  {t:"Herfst/winter (okt–mrt)",r:"Weinig zon, korte dagen, meer regen/wind, koud aan het water. Niet passend bij 'droog & zonnig'."},
+  {t:"Nationale feestdagen & lange weekenden",r:"Koningsdag, Hemelvaart, Bevrijdingsdag, Belgische feestdagen: hogere prijzen, verkeersdrukte, verplichtingen bij gasten."},
+];
+
+const PROGRAM = [
+  {t:"09:00–13:00",titel:"Opbouw & styling",dur:"4 u",wie:"Locatie + stylist + florist",need:"Bloemen, kaarsen, borden, tafelplan",kost:"in styling",let:"Toegang & laad-/lostijden vastleggen met locatie.",alt:"Onder tent/binnen bij regen — geen wijziging."},
+  {t:"13:30–14:00",titel:"Aankomst first-look / bruidspaar",dur:"30 m",wie:"Fotograaf",need:"Rustige plek aan het water",kost:"in fotografie",let:"Buffer voor uitloop.",alt:"Overdekt terras."},
+  {t:"14:30–15:00",titel:"Ontvangst gasten",dur:"30 m",wie:"Gastvrouw/host",need:"Welkomstdrankje, muziek, bewegwijzering",kost:"±€400 (welkomstbubbels)",let:"Duidelijke route + parkeerinstructie vooraf mailen.",alt:"Binnen ontvangen."},
+  {t:"15:00–15:45",titel:"Ceremonie buiten aan het water",dur:"45 m",wie:"(B)ABS / ceremoniespreker",need:"Stoelen, boog, geluid, ringen",kost:"±€650 (spreker+geluid)",let:"Rechtsgeldig? Officiële locatie of aparte juridische voltrekking regelen.",alt:"Wachthuis/vaste tent."},
+  {t:"15:45–17:30",titel:"Borrel & hapjes op terras",dur:"1u45",wie:"Catering",need:"Statafels, hapjes, drank, lounge",kost:"in catering",let:"Genoeg schaduw + parasols bij zon.",alt:"Overdekt terras/binnen."},
+  {t:"17:30–18:30",titel:"Groepsfoto's + gasten-mingle",dur:"1 u",wie:"Fotograaf",need:"Shotlist, weet-wie-waar",kost:"in fotografie",let:"Tijdslot strak bewaken.",alt:"Binnen met daglicht."},
+  {t:"18:30–20:30",titel:"Diner (shared tables)",dur:"2 u",wie:"Catering",need:"Diner, wijnarrangement, menukaarten",kost:"in catering",let:"Allergieën & kindermenu's vooraf.",alt:"Onder tent — geen wijziging."},
+  {t:"20:45–21:15",titel:"Speeches",dur:"30 m",wie:"Ceremoniemeester",need:"Microfoon, volgorde",kost:"in techniek",let:"Max 3–4 sprekers, tijd bewaken.",alt:"n.v.t. (binnen)."},
+  {t:"21:30–21:50",titel:"⟡ Lichtjes over het water (signature)",dur:"20 m",wie:"Bruidspaar + cellist",need:"Drijvende lantaarns, cello",kost:"±€250",let:"Vergunning/afbreekbaar materiaal aan het water checken.",alt:"Kaarsenzee op overdekt terras.",sig:true},
+  {t:"22:00–01:00",titel:"Feest",dur:"3 u",wie:"DJ",need:"Licht, geluid, dansvloer",kost:"in muziek/techniek",let:"Eindtijd & geluidsnorm locatie.",alt:"Binnen — geen wijziging."},
+  {t:"23:30",titel:"Late-night snack",dur:"—",wie:"Catering/foodtruck",need:"Kroketten/friet/broodjes",kost:"±€480 (€6 pp)",let:"Timing net voor tweede adem.",alt:"n.v.t."},
+  {t:"01:00–01:30",titel:"Uitzwaaien & vervoer",dur:"30 m",wie:"Host + vervoer",need:"Taxi/pendel geregeld",kost:"in vervoer",let:"BOB/pendel vooraf communiceren.",alt:"n.v.t."},
+  {t:"01:30–03:00",titel:"Afbouw",dur:"1u30",wie:"Locatie + crew",need:"Checklist retour materialen",kost:"in styling",let:"Wie neemt bloemen/kaarsen mee?",alt:"n.v.t."},
+];
+
+const GUEST = [
+  {kop:"Essentieel",cls:"good",items:[
+    ["Save-the-date","Digitaal, 10–12 mnd vooraf. Bespaart drukwerk."],
+    ["Uitnodiging","Eén mooie gedrukte kaart + link naar website."],
+    ["Trouwwebsite","Gratis (bijv. via een trouwplatform): route, tijden, parkeren, RSVP, dresscode, hotels."],
+    ["Dresscode","Duidelijk + passend bij water/natuur (bijv. 'zomers chic, lage hakken i.v.m. gras/steiger')."],
+    ["Vervoer & parkeren","Vooraf gecommuniceerd; pendel/taxi-afspraak voor 's nachts."],
+    ["Ontvangst","Welkomstdrankje + heldere bewegwijzering."],
+    ["Eten & drinken","Kwaliteit boven kwantiteit; allergieën & kindermenu."],
+    ["Muziek","Ceremonie (cello) + DJ."],
+    ["Fotografie","Volledige dag, één ervaren fotograaf."],
+    ["Bedankmoment","Persoonlijk woord bij diner + bedankkaart achteraf."],
+  ]},
+  {kop:"Aanbevolen extra's",cls:"warn",items:[
+    ["Persoonlijke details","Naamkaartjes, handgeschreven menu, plattegrond aan het water."],
+    ["Verrassingsmoment","Het signature lichtjes-moment (zit al in budget)."],
+    ["Afscheidscadeau","Klein, lokaal & eetbaar (bijv. honing/zaadjes) ±€2–3 pp."],
+    ["Kinderhoek","Speelmand/oppas als er veel kinderen zijn."],
+    ["Late-night snack","Kroketten of foodtruck."],
+    ["Gasten-fotomoment","QR-code op tafel waar gasten hun eigen foto's & filmpjes uploaden — geen videograaf nodig."],
+  ]},
+  {kop:"Luxe — alleen als budget over is",cls:"reed",items:[
+    ["Live band i.p.v. DJ","+€1.000–2.000."],
+    ["Brunch dag erna","Voor overnachtende gasten; +€15–25 pp."],
+    ["Overnachting bijdrage","Deel van hotel/BnB betalen voor gasten van ver."],
+    ["Vuurkorven/extra sfeerverlichting","+€300–600."],
+    ["Fotobooth","+€400–700."],
+    ["Extra fotograaf (2e shooter)","+€500–900 voor meer hoeken op de dag."],
+  ]},
+];
+
+// Budget scenarios: [category, weight-ish base]. Amounts per scenario.
+const BUDGET_CATS = [
+  "Locatie (excl. catering)","Catering (diner+hapjes)","Drank / bar","Personeel & service",
+  "Fotografie","Muziek / DJ","Techniek (licht/geluid)","Styling & bloemen",
+  "Ceremonie & spreker","Trouwkleding (2p)","Haar & make-up","Ringen","Drukwerk",
+  "Vervoer & pendel","Signature + late-night","Vergunning & verzekering","Onvoorzien (≥7,5%)"
+];
+const SCENARIOS = [
+  {naam:"Budgetbewust",totaal:20000,cap:25000,bedragen:[2700,5700,1500,850,1800,750,500,950,500,700,350,550,250,450,500,200,1750],
+   bespaar:"Buffet i.p.v. bediend diner; vrijdag/zondag; DJ; geen videograaf; tweedehands jurk/outlet pak; drank op afkoop-limiet.",
+   niet:"Goede fotograaf, kwaliteit eten, en onvoorzien. Daar niet op inleveren."},
+  {naam:"Gebalanceerd",totaal:23000,cap:25000,bedragen:[3100,6600,1750,950,2100,850,600,1050,600,800,400,600,250,500,600,200,2050],
+   bespaar:"Nog steeds DJ i.p.v. band; geen videograaf; styling deels zelf/huur.",
+   niet:"Locatiekwaliteit, catering, fotografie, onvoorzien."},
+  {naam:"Maximaal",totaal:25000,cap:25000,bedragen:[3350,7150,1900,1050,2300,950,650,1150,650,850,400,650,300,550,650,250,2200],
+   bespaar:"Weinig ruimte meer; dit ís de standaard-bovengrens. Zet extra's alleen in als aanbetalingen meevallen.",
+   niet:"Niets meer schrappen — dit is de plafondversie; bewaak strak."},
+  {naam:"Weekend · iedereen slaapt",totaal:30000,cap:30000,bedragen:[5550,8400,2500,1400,2350,1050,700,1250,650,900,450,700,300,600,650,200,2350],
+   bespaar:"Kies een locatie waar álle ~80 gasten op het domein slapen (bijv. Bergse Bossen, Château d'Urspelt, Stayokay Terschelling, Mondorf). Vrijdag diner → overnachten → zaterdag ontbijt → officieel trouwen → diner → feest. De +€5k dekt de tweede dag catering, hogere domeinhuur (heel weekend) en een overnachtingsbijdrage.",
+   niet:"De overnachting voor alle gasten (dat ís de reden voor +€5k), de tweedaagse catering en onvoorzien."},
+];
+
+const VENDORS = [
+  ["Locatie","12–18 mnd","in totaal / €2.500–8.000 zaalhuur","Exclusief? Eindtijd? Verplichte leveranciers?","Service %, opbouw/afbouw, verlenging per uur","Aanbetaling %, wat bij annulering locatie?","Aanbetaling meestal 30–50%, vaak niet-restitueerbaar"],
+  ["Catering","9–12 mnd","€45–90 pp diner","Proefdiner? Personeel inbegrepen? Kurkengeld?","Uitserveerkosten, personeel na middernacht, huur servies","Minimum-afname, kindprijs","Definitieve aantallen 2 wk vooraf; no-shows betaal je"],
+  ["Bar / drank","9–12 mnd","€25–45 pp (arrangement)","Afkoop of nacalculatie? Sterke drank apart?","Glaswerk, tapinstallatie, ijs","Wat telt als 'open'?","Vaak minimumbesteding"],
+  ["Fotograaf","10–12 mnd","€1.800–3.500","Hoeveel uur? 2e fotograaf? Levertijd?","Reiskosten, album apart, meergefotografeerde uren","Auteursrecht/gebruik, backup-beleid","Aanbetaling, annulering < X weken = volledig"],
+  ["DJ / band","8–10 mnd","DJ €700–1.200 · band €1.500–3.000","Eigen set? Ceremonie-muziek?","Reis, overuren, extra apparatuur","Uitloop-tarief","Aanbetaling"],
+  ["Licht & geluid","6–9 mnd","€400–900","Levert locatie al iets? Stroom?","Op-/afbouw buiten reguliere uren","Wie bedient?","—"],
+  ["Styling","6–9 mnd","€600–1.500","Huur of koop? Op-/afbouw incl.?","Retour/schoonmaak, breuk","Wie ruimt af?","—"],
+  ["Bloemen","4–6 mnd","€500–1.200","Seizoensbloemen (goedkoper)?","Vazenhuur, transport, opbouw ter plaatse","Substitutie bij niet-leverbaar","Aanbetaling"],
+  ["Ceremonie / spreker","6–9 mnd","€400–800","Rechtsgeldig? (B)ABS?","Reis, extra gesprek","Juridische voltrekking apart plannen","—"],
+  ["Vervoer / pendel","3–6 mnd","€300–800","Aantal ritten? Nachttarief?","Wachttijd, nacht/feestdagtoeslag","Annulering","—"],
+  ["Bootverhuur (concept 2)","9–12 mnd","€1.500–3.500","Weer-annuleringsbeleid?","Schipper, brandstof, ligkosten","Wat bij wind/onweer?","Weerclausule cruciaal!"],
+  ["Trouwambtenaar","9–12 mnd (via gemeente)","€0–650","Locatie officieel erkend?","Legeskosten gemeente","Trouwdatum vastzetten bij ondertrouw","—"],
+  ["Entertainment/act","4–6 mnd","€250–800","Ruimte/stroom nodig?","Reis, techniek","—","—"],
+  ["Drukwerk","4–6 mnd","€250–450","Digitaal waar kan?","Porto, proefdruk","Levertijd","—"],
+  ["Haar & make-up","3–6 mnd","€300–500","Proefsessie? Aan huis?","Reis, extra personen (bruidsmeisjes)","Annulering","—"],
+  ["Taart / dessert","3–6 mnd","€250–500","Dessertbuffet i.p.v. taart?","Snijgeld locatie, standaard","—","—"],
+  ["Kinderopvang (indien)","2–3 mnd","€150–350","Gediplomeerd? Ratio?","Materiaal, eten kinderen","—","—"],
+  ["Beveiliging/verkeer (indien)","1–3 mnd","€0–400","Nodig volgens locatie/gemeente?","Uren, nachttarief","—","—"],
+];
+
+const PHASES = [
+  {naam:"12–18 maanden vooraf",tasks:[
+    ["Budget & prioriteiten vastleggen","Hoog","Samen","€0","Bepaalt alles"],
+    ["Datum + locatie kiezen & aanbetalen","Hoog","Samen","aanbet.","Belangrijkste stap"],
+    ["Gastenlijst concept (±80)","Hoog","Samen","€0","Bepaalt capaciteit"],
+    ["Ondertrouw/juridisch plannen bij gemeente","Middel","Sebastiaan","leges","Officiële voltrekking"],
+  ]},
+  {naam:"9–12 maanden vooraf",tasks:[
+    ["Catering + proefdiner","Hoog","Daphne","aanbet.","Na locatie"],
+    ["Fotograaf boeken","Hoog","Sebastiaan","aanbet.","Populair — vroeg vast"],
+    ["DJ/muziek boeken","Middel","Daphne","aanbet.","—"],
+    ["Save-the-date versturen","Middel","Samen","€0","Digitaal"],
+  ]},
+  {naam:"6–9 maanden vooraf",tasks:[
+    ["Styling & bloemen","Middel","Sebastiaan","aanbet.","—"],
+    ["Ceremoniespreker + tekst","Middel","Samen","aanbet.","—"],
+    ["Trouwkleding kopen/passen","Middel","Ieder","koop","Levertijd jurk lang"],
+    ["Licht/geluid + techniek","Laag","Daphne","—","Check wat locatie levert"],
+  ]},
+  {naam:"3–6 maanden vooraf",tasks:[
+    ["Uitnodigingen versturen","Hoog","Samen","drukwerk","Met RSVP"],
+    ["Trouwwebsite live","Middel","Sebastiaan","€0","Route/parkeren/hotels"],
+    ["Vervoer/pendel regelen","Middel","Daphne","aanbet.","Nachtrit!"],
+    ["Ringen kopen","Middel","Samen","koop","Graveertijd"],
+    ["Haar & make-up proef","Laag","Sebastiaan","proef","—"],
+  ]},
+  {naam:"1–3 maanden vooraf",tasks:[
+    ["Definitief menu + aantallen","Hoog","Daphne","—","Allergieën"],
+    ["Draaiboek maken","Hoog","Ceremoniemeester","€0","Deel met leveranciers"],
+    ["Tafelplan","Middel","Samen","€0","—"],
+    ["Signature-materiaal (lantaarns)","Laag","Sebastiaan","€250","Afbreekbaar + vergunning"],
+    ["Verzekering afsluiten","Middel","Daphne","premie","Annulering/aansprakelijk"],
+  ]},
+  {naam:"Laatste maand",tasks:[
+    ["Eindaantallen door aan catering","Hoog","Daphne","—","Meestal 2 wk vooraf"],
+    ["Betalingen/aanbetalingen aflopen","Hoog","Samen","restbedrag","—"],
+    ["Weer-plan B doornemen met locatie","Hoog","Ceremoniemeester","€0","Tent/binnen"],
+    ["Bevestig alle leveranciers + tijden","Middel","Ceremoniemeester","€0","—"],
+  ]},
+  {naam:"Laatste week",tasks:[
+    ["Noodtas (naald/pleisters/opladers)","Laag","Sebastiaan","€30","—"],
+    ["Speeches/volgorde definitief","Middel","Ceremoniemeester","€0","—"],
+    ["Weersverwachting → knoop plan B","Hoog","Samen","€0","48u vooraf beslissen"],
+  ]},
+  {naam:"Trouwdag",tasks:[
+    ["Draaiboek volgen, host regelt","Hoog","Ceremoniemeester","—","Bruidspaar geniet"],
+    ["Contant/fooienvelop klaar","Laag","Getuige","fooi","—"],
+  ]},
+  {naam:"Week na de bruiloft",tasks:[
+    ["Bedankkaarten versturen","Middel","Samen","porto","—"],
+    ["Retour huurspullen + eindafrekening","Middel","Daphne","evt. bij","Check breuk/schade"],
+    ["Foto's delen met gasten","Laag","Sebastiaan","€0","—"],
+  ]},
+];
+
+const RISKS = [
+  ["Slecht weer / regen","Hoog","Middel","Locatie met vaste tent + binnenruimte (Fort de Gagel)","Programma schuift naar binnen; sowieso ingebouwd","Ceremoniemeester"],
+  ["Extreem warm (>30°C)","Middel","Middel","Schaduw, parasols, water-/limonadestation, ventilatoren","Ceremonie inkorten, diner later","Catering"],
+  ["Harde wind","Middel","Hoog (bij boot)","Concept 1 zit beschut; tent goed verankerd","Boot-onderdeel schrappen; naar binnen","Locatie"],
+  ["Uitval boot","Laag","Hoog","Alleen concept 2; weerclausule in contract","Terugvallen op paviljoen dat vast staat","Bootverhuurder"],
+  ["Vertraging vervoer/gasten","Middel","Laag","Ruime buffers, duidelijke tijden + route vooraf","Ceremonie 15 min opschuiven","Ceremoniemeester"],
+  ["Leverancier zegt af","Laag","Hoog","Contracten + aanbetalingsbewijs; reservelijst per categorie","Back-up bellen; verzekering aanspreken","Ceremoniemeester"],
+  ["Technische problemen (geluid)","Middel","Middel","Test vooraf; reserve-microfoon; DJ met backup","Akoestisch/megafoon; DJ-laptop reserve","Techniek/DJ"],
+  ["Geluidsoverlast / norm","Middel","Middel","Eindtijd & dB-norm vooraf checken; feest binnen","Volume terug; binnen verder","Locatie"],
+  ["Budgetoverschrijding","Middel","Hoog","Strak begrotingsblad, ≥7,5% onvoorzien, 3 offertes/post","Extra's schrappen (luxe-lijst eerst)","Samen"],
+  ["Medische noodsituatie","Laag","Hoog","EHBO-koffer, host kent route hulpdiensten, allergieën bekend","112, host begeleidt; toegang boot/eiland vooraf regelen","Host"],
+  ["Gasten te laat","Middel","Laag","Aankomst 30 min voor ceremonie communiceren","Korte marge; ceremonie start toch","Ceremoniemeester"],
+  ["Locatiebeperkingen (capaciteit/vergunning)","Laag","Hoog","Plattegrond & vergunningen vooraf; 80 past ruim","Herindeling ruimtes","Locatie"],
+  ["Onvoldoende hotelcapaciteit","Middel","Middel","Hotelblok vroeg reserveren; opties op website","Extra hotels/BnB's aandragen; pendel","Sebastiaan"],
+];
+
+const MATRIX_CRIT = [
+  {k:"bijz",label:"Bijzonderheid",w:16},
+  {k:"gast",label:"Gastenbeleving",w:14},
+  {k:"pk",label:"Totale kosten (prijs-kwaliteit)",w:14},
+  {k:"uitstr",label:"Uitstraling / wow-factor",w:10},
+  {k:"weer",label:"Slechtweervoorziening",w:9},
+  {k:"overnacht",label:"Overnachting (pré, geen eis)",w:8},
+  {k:"bereik",label:"Bereikbaarheid",w:8},
+  {k:"eten",label:"Eten & drinken",w:6},
+  {k:"water",label:"Ligging aan het water",w:5},
+  {k:"flex",label:"Flexibiliteit",w:4},
+  {k:"feest",label:"Feestmogelijkheden",w:3},
+  {k:"uitvoer",label:"Praktische uitvoerbaarheid",w:3},
+];
+// scores per top-3 location on all matrix criteria (1-10)
+const MATRIX_LOC = [
+  {naam:"Fort de Gagel (NL)",s:{bijz:9,water:9,gast:9,pk:9,bereik:9,flex:6,weer:9,eten:8,feest:8,overnacht:3,uitstr:9,uitvoer:9}},
+  {naam:"Bergse Bossen (NL)",s:{bijz:8,water:2,gast:9,pk:7,bereik:8,flex:7,weer:9,eten:8,feest:8,overnacht:10,uitstr:8,uitvoer:9}},
+  {naam:"Château Jemeppe (BE)",s:{bijz:10,water:7,gast:9,pk:5,bereik:5,flex:7,weer:8,eten:8,feest:8,overnacht:7,uitstr:10,uitvoer:6}},
+];
+
+const DECISIONS = [
+  ["1 · Budgetplafond & prioriteiten","Kies scenario (advies: Gebalanceerd €23k) en jullie top-3 waar geld heen mag. Alles hangt hiervan af."],
+  ["2 · Datum vastzetten","Kies uit 5 jun / 12 jun / 4 sep 2027. Zonder datum kun je niets boeken."],
+  ["3 · Locatie bezichtigen & aanbetalen","Fort de Gagel bezoeken, capaciteit voor 80 + plattegrond checken, offerte 2027 opvragen, aanbetalen."],
+  ["4 · Gastenlijst hard maken","±80 exact bepalen — dit stuurt catering, vervoer en tafelplan."],
+  ["5 · Kernleveranciers boeken","Catering + fotograaf + DJ: de drie die het snelst volgeboekt raken."],
+];
+
+/* =================================================================
+   RENDER
+   ================================================================= */
+const VIEWS = [
+  ["start","Welkom"],["concepten","Concepten"],["locaties","Locaties"],["top3","Top 3"],
+  ["selectie","Mijn selectie"],
+  ["data","Datum & weer"],["programma","De dag"],["gasten","Gasten"],["budget","Begroting"],
+  ["leveranciers","Leveranciers"],["planning","Planning"],["risico","Risico's"],
+  ["beslismatrix","Keuzehulp"],["beslissingen","Eerste stappen"]
+];
+let charts = {};
+if(window.Chart){
+  Chart.defaults.font.family="Jost, sans-serif";
+  Chart.defaults.font.weight="300";
+  Chart.defaults.color="#5a6a60";
+  Chart.defaults.plugins.legend.labels.usePointStyle=true;
+  Chart.defaults.plugins.tooltip.backgroundColor="#33413b";
+  Chart.defaults.plugins.tooltip.padding=10;
+  Chart.defaults.plugins.tooltip.cornerRadius=3;
+  Chart.defaults.plugins.tooltip.titleFont={family:"Cormorant Garamond, serif",size:15};
+}
+function go(id){
+  document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+  document.getElementById("v-"+id).classList.add("active");
+  document.querySelectorAll("#tabs button").forEach(b=>b.classList.toggle("active",b.dataset.id===id));
+  window.scrollTo({top:0,behavior:"smooth"});
+  if(id==="data") drawClim();
+  if(id==="budget") renderBudget();
+  if(id==="beslismatrix") drawMatrix();
+  if(id==="selectie") renderSelectie();
+}
+// nav
+const tabs=document.getElementById("tabs");
+VIEWS.forEach((v,i)=>{
+  const b=document.createElement("button");
+  b.textContent=v[1];b.dataset.id=v[0];if(i===0)b.classList.add("active");
+  b.onclick=()=>go(v[0]);tabs.appendChild(b);
+});
+
+function scoreColor(n){
+  if(n>=8.5)return"#6e8f6a";if(n>=7)return"#5f8a86";if(n>=5)return"#c39a4e";return"#b57468";
+}
+function avg(s){const v=Object.values(s);return v.reduce((a,b)=>a+b,0)/v.length;}
+
+/* ---- concepts ---- */
+document.getElementById("concept-cards").innerHTML = CONCEPTS.map(c=>`
+  <div class="card">
+    <span class="pill ${c.pillClass}">${c.pill}</span>
+    <h3 style="margin-top:10px">${c.naam}</h3>
+    <p class="muted" style="margin-top:6px">${c.omschrijving}</p>
+    <h4>Sfeer</h4><p class="muted">${c.sfeer}</p>
+    <h4>Waarom bijzonder</h4><p class="muted">${c.waarom}</p>
+    <h4>Voordelen</h4><ul class="muted" style="padding-left:18px">${c.voor.map(x=>`<li>${x}</li>`).join("")}</ul>
+    <h4>Nadelen</h4><ul class="muted" style="padding-left:18px">${c.nadeel.map(x=>`<li>${x}</li>`).join("")}</ul>
+    <h4>Kosten (indicatie)</h4><p class="stat small">${c.kosten}</p>
+    <h4>Risico &amp; oplossing</h4><p class="muted">${c.risico}</p>
+    <h4>Slecht weer</h4><p class="muted">${c.slecht}</p>
+  </div>`).join("");
+
+/* ---- locations ---- */
+const favs = new Set();
+const FAVS_KEY = "sd_wedding_favs_v1";
+
+// Persist the selection across sessions using the artifact storage API.
+// Degrades gracefully to in-memory only if storage is unavailable.
+const hasStore = (typeof window !== "undefined" && window.storage
+  && typeof window.storage.get === "function" && typeof window.storage.set === "function");
+
+async function saveFavs(){
+  if(!hasStore) return;
+  try{
+    await window.storage.set(FAVS_KEY, JSON.stringify([...favs]), false);
+  }catch(e){ /* storage unavailable — selectie blijft in geheugen bewaard */ }
+}
+async function loadFavs(){
+  if(!hasStore) return;
+  try{
+    const res = await window.storage.get(FAVS_KEY, false);
+    if(res && res.value){
+      const arr = JSON.parse(res.value);
+      if(Array.isArray(arr)){
+        favs.clear();
+        // only keep ids that still exist in the current location list
+        const valid = new Set(LOCATIONS.map(l=>l.id));
+        arr.forEach(id=>{ if(valid.has(id)) favs.add(id); });
+      }
+    }
+  }catch(e){ /* geen opgeslagen selectie of storage niet beschikbaar */ }
+}
+const state = {land:"all",type:"all",water:"all",sleep:"all",pool:false,weekend:false,premium:false,budget:35000,favonly:false};
+// land helpers (NL/BE/LU)
+const LAND_NAME={NL:"Nederland",BE:"België",LU:"Luxemburg"};
+const LAND_CLS={NL:"nl",BE:"be",LU:"reed"};
+function landPill(l){return `<span class="pill ${LAND_CLS[l.land]||'reed'}">${LAND_NAME[l.land]||l.land}</span>`;}
+// sleep helpers
+const SLEEP_TXT={ja80:"Ja — ±80 gasten",deels:"Deels / uitbreidbaar",nee:"Niet op locatie"};
+const SLEEP_CLS={ja80:"good",deels:"warn",nee:"bad"};
+// type filter options
+const types=[...new Set(LOCATIONS.map(l=>l.type))].sort();
+const ftype=document.getElementById("f-type");
+types.forEach(t=>{const o=document.createElement("option");o.value=t;o.textContent=t;ftype.appendChild(o);});
+
+function locCard(l){
+  const total=avg(l.s);
+  const rows=[["Type",l.type],["Ligging",l.waterTxt],["Capaciteit",l.cap],
+    ["Exclusief",l.excl],["Catering",l.cat],["Overnachten",l.overnacht],
+    ["Bereik",l.bereik],["Parkeren",l.park],["Slecht weer",l.slecht]];
+  const sc=[["Bijzonderheid",l.s.bijz],["Gastenbeleving",l.s.gast],["Water",l.s.water],
+    ["Prijs-kwaliteit",l.s.pk],["Logistiek",l.s.log],["Weerbestendig",l.s.weer]];
+  const badges=[
+    `<span class="pill ${SLEEP_CLS[l.sleep]}">🛏 ${l.sleep==='ja80'?'±80 slapen':l.sleep==='deels'?'deels slapen':'geen slaap'}</span>`,
+    l.pool?`<span class="pill">🏊 zwembad</span>`:"",
+    l.weekend?`<span class="pill reed">📅 weekend</span>`:"",
+    l.premium?`<span class="pill" style="background:#efe6d2;color:#8a6d38;border-color:rgba(176,141,79,.35)">✦ net iets duurder</span>`:"",
+  ].filter(Boolean).join(" ");
+  const photo = l.img
+    ? `<img src="${l.img}" alt="Impressie van ${l.naam}" loading="lazy" referrerpolicy="no-referrer"
+         onerror="this.style.display='none';this.parentNode.querySelector('.ph-fallback').style.display='flex';">
+       <div class="ph-fallback" style="display:none"><span class="drop"></span><b>${l.naam}</b></div>`
+    : `<div class="ph-fallback" style="display:flex"><span class="drop"></span><b>${l.naam}</b></div>`;
+  return `<div class="card loc" data-id="${l.id}">
+    <a class="loc-photo" href="${l.url}" target="_blank" rel="noopener" title="Bekijk ${l.naam} op de eigen website">
+      ${photo}
+      <span class="ph-view">Bekijk website ↗</span>
+    </a>
+    <button class="fav ${favs.has(l.id)?'on':''}" onclick="toggleFav('${l.id}')" title="Voeg toe aan Mijn selectie">${favs.has(l.id)?'♥':'♡'}</button>
+    <div class="loc-inner">
+      ${landPill(l)}
+      <span class="pill ${l.priceType==='actueel'?'good':'reed'}">${l.priceType==='actueel'?'Actuele prijs':'Schatting'}</span>
+      <h3 style="margin-top:10px">${l.naam}</h3>
+      <div class="muted">${l.plaats} · <a href="${l.url}" target="_blank" rel="noopener">${l.web}</a></div>
+      <div style="margin-top:8px">${badges}</div>
+      <div class="cost">${EUR(l.totaal)} <span class="muted" style="font-size:12px">geschat totaal</span></div>
+      <dl>${rows.map(r=>`<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join("")}</dl>
+      <h4 style="font-size:13px">Sterk</h4><p class="muted" style="font-size:12px">${l.sterk}</p>
+      <h4 style="font-size:13px">Zwak</h4><p class="muted" style="font-size:12px">${l.zwak}</p>
+      <div class="scores">${sc.map(s=>`<div><span>${s[0]}</span><span class="score" style="background:${scoreColor(s[1])}">${s[1]}</span></div>`).join("")}</div>
+      <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center">
+        <span class="muted">Gemiddelde score</span>
+        <span class="score" style="background:${scoreColor(total)};width:auto;padding:0 10px">${total.toFixed(1)}</span>
+      </div>
+      <a class="weblink" href="${l.url}" target="_blank" rel="noopener">🌐 Officiële website &amp; foto's</a>
+    </div>
+  </div>`;
+}
+function renderLocs(){
+  const list=LOCATIONS.filter(l=>
+    (state.land==="all"||l.land===state.land)&&
+    (state.type==="all"||l.type===state.type)&&
+    (state.water==="all"||l.water===state.water)&&
+    (state.sleep==="all"||l.sleep===state.sleep)&&
+    (!state.pool||l.pool)&&
+    (!state.weekend||l.weekend)&&
+    (!state.premium||l.premium)&&
+    (l.totaal<=state.budget)&&
+    (!state.favonly||favs.has(l.id))
+  );
+  document.getElementById("loc-count").textContent=list.length;
+  document.getElementById("loc-cards").innerHTML = list.length?list.map(locCard).join(""):
+    `<div class="card"><p class="muted">Geen locaties met deze filters. Verruim de filters of het budget.</p></div>`;
+  renderLocTable();
+}
+function renderLocTable(){
+  const sorted=[...LOCATIONS].sort((a,b)=>avg(b.s)-avg(a.s));
+  let h=`<thead><tr><th>Locatie</th><th>Land</th><th>Type</th><th>Water</th><th>Slapen</th><th class="num">Totaal</th>
+    <th class="num">Bijz.</th><th class="num">Gast</th><th class="num">Water</th><th class="num">P/K</th><th class="num">Log.</th><th class="num">Weer</th><th class="num">Gem.</th></tr></thead><tbody>`;
+  const slp={ja80:"±80",deels:"deels",nee:"–"};
+  sorted.forEach(l=>{
+    const t=avg(l.s);
+    h+=`<tr><td><b>${l.naam}</b><br><span class="muted">${l.plaats}</span></td>
+      <td><span class="pill ${LAND_CLS[l.land]||'reed'}">${l.land}</span></td>
+      <td>${l.type}</td><td>${l.water==='op'?'Op':l.water==='aan'?'Aan':'–'}</td>
+      <td>${slp[l.sleep]}${l.pool?' 🏊':''}</td>
+      <td class="num">${EUR(l.totaal)}</td>
+      <td class="num">${l.s.bijz}</td><td class="num">${l.s.gast}</td><td class="num">${l.s.water}</td>
+      <td class="num">${l.s.pk}</td><td class="num">${l.s.log}</td><td class="num">${l.s.weer}</td>
+      <td class="num"><span class="score" style="background:${scoreColor(t)};width:auto;padding:0 8px">${t.toFixed(1)}</span></td></tr>`;
+  });
+  document.getElementById("loc-table").innerHTML=h+"</tbody>";
+}
+window.toggleFav=id=>{favs.has(id)?favs.delete(id):favs.add(id);renderLocs();renderTop3();renderSelectie();updateFavCount();saveFavs();};
+window.clearFavs=()=>{favs.clear();renderLocs();renderTop3();renderSelectie();updateFavCount();saveFavs();};
+// filter bindings
+document.querySelectorAll("#f-land .chip").forEach(c=>c.onclick=()=>{
+  document.querySelectorAll("#f-land .chip").forEach(x=>x.classList.remove("on"));c.classList.add("on");state.land=c.dataset.v;renderLocs();});
+document.querySelectorAll("#f-water .chip").forEach(c=>c.onclick=()=>{
+  document.querySelectorAll("#f-water .chip").forEach(x=>x.classList.remove("on"));c.classList.add("on");state.water=c.dataset.v;renderLocs();});
+document.querySelectorAll("#f-sleep .chip").forEach(c=>c.onclick=()=>{
+  document.querySelectorAll("#f-sleep .chip").forEach(x=>x.classList.remove("on"));c.classList.add("on");state.sleep=c.dataset.v;renderLocs();});
+const poolBtn=document.getElementById("f-pool");
+poolBtn.onclick=()=>{state.pool=!state.pool;poolBtn.classList.toggle("on",state.pool);renderLocs();};
+const weekBtn=document.getElementById("f-weekend");
+weekBtn.onclick=()=>{state.weekend=!state.weekend;weekBtn.classList.toggle("on",state.weekend);renderLocs();};
+const premBtn=document.getElementById("f-premium");
+premBtn.onclick=()=>{state.premium=!state.premium;premBtn.classList.toggle("on",state.premium);renderLocs();};
+ftype.onchange=()=>{state.type=ftype.value;renderLocs();};
+const fb=document.getElementById("f-budget");
+fb.oninput=()=>{state.budget=+fb.value;document.getElementById("budlabel").textContent=EUR(+fb.value);renderLocs();};
+const favBtn=document.getElementById("f-favonly");
+favBtn.onclick=()=>{state.favonly=!state.favonly;favBtn.classList.toggle("on",state.favonly);renderLocs();};
+renderLocs();
+
+/* ---- top 3 ---- */
+const TOP3=["gagel","bergsebossen","jemeppe"];
+const TOP3_WHY={
+  gagel:"Terug op 1 nu overnachten een pré is (geen eis): de beste all-rounder. Echt op het water (slotgracht), uniek forteiland, weerbestendig door vaste tent + wachthuis, en een bekende all-in prijs die ruim binnen budget past. Geen verplaatsingen, gasten vinden het bijzonder. Enige minpunt voor jullie weekend-wens: geen overnachting op locatie — maar Utrecht ligt op 10 minuten, dus een hotelblok is zo geregeld.",
+  bergsebossen:"De keuze als jullie tóch het hele gezelschap willen laten blijven: met 65 kamers slapen ALLE ~80 gasten op locatie. Vrijdag diner → samen overnachten → zaterdag ontbijt → ceremonie → diner → feest, zonder dat iemand hoeft te rijden. Hidden gem in het bos op de Utrechtse Heuvelrug, all-in aanpak, binnen ~€29.500. Geen water, maar wél jullie complete weekenddroom.",
+  jemeppe:"De romantische middenweg mét water: een 13e-eeuws sprookjeskasteel in de Ardennen met slotgracht, zwembad en sauna, op ±1 uur van Brussel. Gasten slapen in het kasteel (deel aanvullen voor 80), het domein is privé. Qua 'conte de fées'-sfeer bijna onovertroffen — precies die plek waar gasten later zeggen: dít was speciaal.",
+};
+function renderTop3(){
+  document.getElementById("top3-cards").innerHTML=TOP3.map((id,i)=>{
+    const l=LOCATIONS.find(x=>x.id===id);const t=avg(l.s);
+    const thumb = l.img
+      ? `<a href="${l.url}" target="_blank" rel="noopener" class="loc-photo" style="height:150px;border-radius:10px" title="Bekijk ${l.naam}">
+           <img src="${l.img}" alt="Impressie ${l.naam}" loading="lazy" referrerpolicy="no-referrer"
+             onerror="this.style.display='none';this.parentNode.querySelector('.ph-fallback').style.display='flex';">
+           <div class="ph-fallback" style="display:none"><span class="drop"></span><b>${l.naam}</b></div>
+           <span class="ph-view">Bekijk website ↗</span></a>`
+      : `<a href="${l.url}" target="_blank" rel="noopener" class="loc-photo" style="height:150px;border-radius:10px" title="Bekijk ${l.naam}">
+           <div class="ph-fallback" style="display:flex"><span class="drop"></span><b>${l.naam}</b></div>
+           <span class="ph-view">Bekijk website ↗</span></a>`;
+    return `<div class="card" style="display:grid;grid-template-columns:220px 1fr;gap:20px;align-items:start">
+      <div>
+        ${thumb}
+        <div style="text-align:center;margin-top:10px">
+          <span class="stat" style="font-size:30px;color:var(--reed)">#${i+1}</span>
+          <span class="score" style="background:${scoreColor(t)};width:auto;padding:2px 10px;display:inline-block;margin-left:6px">${t.toFixed(1)}</span>
+          ${favs.has(id)?'<div style="margin-top:6px"><span class="pill bad" style="background:var(--blush-light);color:#a55a4c">♥ in selectie</span></div>':''}
+        </div>
+      </div>
+      <div>
+        ${landPill(l)}
+        <h3 style="margin-top:8px">${l.naam} <span class="muted" style="font-size:14px">· ${l.plaats}</span></h3>
+        <div class="cost" style="margin-top:4px">${EUR(l.totaal)} <span class="muted" style="font-size:12px">geschat totaal</span></div>
+        <p class="muted" style="margin-top:10px">${TOP3_WHY[id]}</p>
+        <a class="weblink" href="${l.url}" target="_blank" rel="noopener">🌐 ${l.web}</a>
+      </div>
+    </div>`;
+  }).join("");
+}
+renderTop3();
+
+/* ---- Mijn selectie (liked locations) ---- */
+function updateFavCount(){
+  const b=document.getElementById("fav-count");
+  if(b) b.textContent=favs.size;
+  // update tab label with count
+  const tab=document.querySelector('#tabs button[data-id="selectie"]');
+  if(tab) tab.textContent = favs.size? `Mijn selectie (${favs.size})` : "Mijn selectie";
+}
+function selCard(l){
+  const total=avg(l.s);
+  const photo=l.img
+    ? `<img src="${l.img}" alt="${l.naam}" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentNode.querySelector('.ph-fallback').style.display='flex';">
+       <div class="ph-fallback" style="display:none"><span class="drop"></span><b>${l.naam}</b></div>`
+    : `<div class="ph-fallback" style="display:flex"><span class="drop"></span><b>${l.naam}</b></div>`;
+  const badges=[
+    `<span class="pill ${SLEEP_CLS[l.sleep]}">🛏 ${l.sleep==='ja80'?'±80 slapen':l.sleep==='deels'?'deels':'geen'}</span>`,
+    l.pool?`<span class="pill">🏊</span>`:"",
+    l.weekend?`<span class="pill reed">📅</span>`:"",
+  ].filter(Boolean).join(" ");
+  return `<div class="card loc" data-id="${l.id}">
+    <a class="loc-photo" href="${l.url}" target="_blank" rel="noopener" title="Bekijk ${l.naam}">
+      ${photo}<span class="ph-view">Bekijk website ↗</span></a>
+    <button class="fav on" onclick="toggleFav('${l.id}')" title="Verwijder uit selectie">♥</button>
+    <div class="loc-inner">
+      ${landPill(l)} <span class="pill ${l.priceType==='actueel'?'good':'reed'}">${l.priceType==='actueel'?'Actuele prijs':'Schatting'}</span>
+      <h3 style="margin-top:10px">${l.naam}</h3>
+      <div class="muted">${l.plaats} · <a href="${l.url}" target="_blank" rel="noopener">${l.web}</a></div>
+      <div style="margin-top:8px">${badges}</div>
+      <div class="cost">${EUR(l.totaal)} <span class="muted" style="font-size:12px">geschat totaal</span></div>
+      <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center">
+        <span class="muted">Gemiddelde score</span>
+        <span class="score" style="background:${scoreColor(total)};width:auto;padding:0 10px">${total.toFixed(1)}</span>
+      </div>
+      <a class="weblink" href="${l.url}" target="_blank" rel="noopener">🌐 Officiële website &amp; foto's</a>
+    </div>
+  </div>`;
+}
+function renderSelectie(){
+  const list=LOCATIONS.filter(l=>favs.has(l.id));
+  const empty=document.getElementById("selectie-empty");
+  const cards=document.getElementById("selectie-cards");
+  const cmp=document.getElementById("selectie-compare-wrap");
+  if(!empty) return;
+  if(!list.length){
+    empty.innerHTML=`<div class="card" style="text-align:center;padding:44px 24px">
+      <div class="botanical" style="margin-bottom:10px"><svg viewBox="0 0 60 30" style="width:34px"><g fill="none" stroke="currentColor" stroke-width="1.1"><path d="M30,4 C30,12 30,20 30,26"/><path d="M30,10 C24,7 20,8 17,5"/><path d="M30,10 C36,7 40,8 43,5"/><path d="M30,16 C24,13 19,14 15,11"/><path d="M30,16 C36,13 41,14 45,11"/><path d="M30,22 C25,20 21,20 18,17"/><path d="M30,22 C35,20 39,20 42,17"/></g></svg></div>
+      <h3 style="font-size:22px">Nog geen favorieten</h3>
+      <p class="muted" style="max-width:46ch;margin:8px auto 16px">Ga naar <b>Locaties</b>, blader door de 56 plekken en tik op het ♥ bij de locaties die jullie aanspreken. Ze verschijnen hier vanzelf, zij-aan-zij.</p>
+      <button class="print-btn" style="border-color:var(--gold-soft);color:var(--gold-deep)" onclick="go('locaties')">→ Naar locaties</button>
+    </div>`;
+    cards.innerHTML=""; cmp.style.display="none"; return;
+  }
+  empty.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+    <span class="muted">${list.length} ${list.length===1?'locatie':'locaties'} in jullie selectie — bewaard, ook na het sluiten.</span>
+    <button class="print-btn" style="border-color:var(--line-2)" onclick="clearFavs()">Selectie wissen</button>
+  </div>`;
+  cards.innerHTML=list.map(selCard).join("");
+  // comparison table
+  cmp.style.display="";
+  const rowsDef=[
+    ["Land", l=>LAND_NAME[l.land]||l.land, null],
+    ["Type", l=>l.type, null],
+    ["Totaal (schatting)", l=>l.totaal, "min", l=>EUR(l.totaal)],
+    ["Per gast (80)", l=>Math.round(l.totaal/80), "min", l=>EUR(l.totaal/80)],
+    ["Water", l=>l.water==='op'?'Op het water':l.water==='aan'?'Aan het water':'—', null],
+    ["Iedereen slapen", l=>({ja80:'Ja, ±80',deels:'Deels',nee:'Nee'}[l.sleep]), null, null, l=>({ja80:3,deels:2,nee:1}[l.sleep]),"max"],
+    ["Zwembad", l=>l.pool?'Ja':'—', null, null, l=>l.pool?1:0,"max"],
+    ["Weekendbruiloft", l=>l.weekend?'Ja':'—', null, null, l=>l.weekend?1:0,"max"],
+    ["Capaciteit", l=>l.cap, null],
+    ["Bijzonderheid", l=>l.s.bijz, "max"],
+    ["Gastenbeleving", l=>l.s.gast, "max"],
+    ["Prijs-kwaliteit", l=>l.s.pk, "max"],
+    ["Weerbestendig", l=>l.s.weer, "max"],
+    ["Gem. score", l=>+avg(l.s).toFixed(1), "max"],
+  ];
+  let h=`<thead><tr><th>Criterium</th>${list.map(l=>`<th>${l.naam.replace(/ /g,'&nbsp;')}</th>`).join("")}</tr></thead><tbody>`;
+  rowsDef.forEach(rd=>{
+    const [label,val,best,fmt,sortval,bestdir]=rd;
+    const sv = sortval||val;
+    const nums=list.map(l=>sv(l)).filter(v=>typeof v==='number');
+    let bestv=null;
+    const dir = bestdir||best;
+    if(dir==='min'&&nums.length) bestv=Math.min(...nums);
+    if(dir==='max'&&nums.length) bestv=Math.max(...nums);
+    h+=`<tr><td>${label}</td>`;
+    list.forEach(l=>{
+      const raw=sv(l); const disp=fmt?fmt(l):val(l);
+      const isBest = bestv!==null && typeof raw==='number' && raw===bestv;
+      h+=`<td class="${typeof val(l)==='number'||fmt?'num':''}" ${isBest?'style="background:var(--sage-light);font-weight:600;color:var(--sage-deep)"':''}>${disp}${isBest?' ✓':''}</td>`;
+    });
+    h+="</tr>";
+  });
+  h+="</tbody>";
+  document.getElementById("selectie-table").innerHTML=h;
+}
+renderSelectie();
+updateFavCount();
+
+function dateTable(data){
+  let h=`<thead><tr><th>Datum</th><th>Temp (hist.)</th><th>Neerslagkans</th><th>Zon</th><th>Zon onder</th><th>Voordeel</th><th>Nadeel</th><th>Budget</th></tr></thead><tbody>`;
+  data.forEach(d=>h+=`<tr><td><b>${d.d}</b></td><td>${d.t}</td><td>${d.neer}</td><td>${d.zon}</td><td>${d.zon2}</td><td class="muted">${d.voor}</td><td class="muted">${d.nadeel}</td><td>${d.bud}</td></tr>`);
+  return h+"</tbody>";
+}
+document.getElementById("datesA").innerHTML=dateTable(DATES_A);
+document.getElementById("datesB").innerHTML=dateTable(DATES_B);
+document.getElementById("avoid-cards").innerHTML=AVOID.map(a=>`
+  <div class="card"><span class="pill bad">Vermijden</span><h3 style="margin-top:8px;font-size:16px">${a.t}</h3><p class="muted">${a.r}</p></div>`).join("");
+
+/* ---- climate chart ---- */
+// KNMI De Bilt normalen 1991-2020 (zonuren/mnd, neerslag mm/mnd) — bron KNMI
+const CLIM={
+  labels:["jan","feb","mrt","apr","mei","jun","jul","aug","sep","okt","nov","dec"],
+  zon:[62,92,125,182,225,214,214,201,148,113,63,49],
+  neer:[73,58,54,42,56,66,79,79,79,83,81,80],
+  temp:[3.6,3.9,6.5,9.8,13.4,16.2,18.3,18.0,15.0,11.2,7.1,4.4]
+};
+document.getElementById("climFallback").innerHTML =
+  "Normalen 1991–2020 (KNMI, De Bilt) — mei/jun: ±225/214 zonuren, ±56/66 mm neerslag. "+
+  CLIM.labels.map((m,i)=>`${m}: ${CLIM.zon[i]}u/${CLIM.neer[i]}mm`).join(" · ");
+function drawClim(){
+  if(charts.clim||!window.Chart)return;
+  const ctx=document.getElementById("climChart");
+  charts.clim=new Chart(ctx,{type:"bar",data:{labels:CLIM.labels,
+    datasets:[
+      {label:"Zonuren",data:CLIM.zon,backgroundColor:"#c9ad74",borderRadius:3,yAxisID:"y"},
+      {label:"Neerslag (mm)",data:CLIM.neer,backgroundColor:"#5f8a86",borderRadius:3,yAxisID:"y"},
+      {label:"Temp (°C)",data:CLIM.temp,type:"line",borderColor:"#d8a89a",backgroundColor:"#d8a89a",tension:.4,yAxisID:"y1",pointRadius:3,borderWidth:2}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{labels:{font:{family:"Jost, sans-serif",size:12},color:"#5a6a60",usePointStyle:true,boxWidth:8}}},
+      scales:{y:{title:{display:true,text:"zon (u) / neerslag (mm)"}},
+        y1:{position:"right",title:{display:true,text:"°C"},grid:{drawOnChartArea:false}}}}});
+}
+
+/* ---- program timelines ---- */
+function tlItem(p){
+  return `<div class="tl-item ${p.sig?'signature':''}">
+    <div class="tl-time">${p.t} <span class="muted" style="font-weight:400">· ${p.dur}</span></div>
+    <h4>${p.titel}</h4>
+    <div class="det">${p.wie} · ${p.need} · <b>${p.kost}</b></div>
+    <div class="det" style="margin-top:2px">⚠ ${p.let}</div>
+    <div class="alt">☂ ${p.alt}</div>
+  </div>`;
+}
+const half=Math.ceil(PROGRAM.length/2);
+document.getElementById("tl-1").innerHTML=PROGRAM.slice(0,half).map(tlItem).join("");
+document.getElementById("tl-2").innerHTML=PROGRAM.slice(half).map(tlItem).join("");
+
+/* ---- guests ---- */
+document.getElementById("guest-cols").innerHTML=GUEST.map(g=>`
+  <div class="card"><span class="pill ${g.cls}">${g.kop}</span>
+    ${g.items.map(i=>`<h4>${i[0]}</h4><p class="muted" style="font-size:12.5px">${i[1]}</p>`).join("")}
+  </div>`).join("");
+
+/* ---- budget ---- */
+let curScen=1;
+function renderBudget(){
+  const sc=SCENARIOS[curScen];
+  const sum=sc.bedragen.reduce((a,b)=>a+b,0);
+  const cap=sc.cap||25000;
+  // KPI
+  document.getElementById("budget-kpi").innerHTML=`
+    <div class="card"><div class="muted">Totaal</div><div class="stat">${EUR(sum)}</div></div>
+    <div class="card"><div class="muted">Per gast (80)</div><div class="stat small">${EUR(sum/80)}</div></div>
+    <div class="card"><div class="muted">Onvoorzien</div><div class="stat small">${(sc.bedragen[sc.bedragen.length-1]/sum*100).toFixed(1)}%</div></div>
+    <div class="card"><div class="muted">Ruimte tot grens</div><div class="stat small" style="color:${cap-sum>=0?'var(--good)':'var(--bad)'}">${EUR(cap-sum)}</div></div>`;
+  // progress
+  const pct=Math.min(100,sum/cap*100);
+  const fill=document.getElementById("budgetfill");
+  fill.style.width=pct+"%";
+  fill.style.background=sum<=cap?"linear-gradient(90deg,#b08d4f,#7f9678,#5f8a86)":"var(--bad)";
+  document.getElementById("budget-caplabel").textContent=EUR(cap);
+  document.getElementById("budget-captitle").textContent=cap>25000?
+    "Voortgang t.o.v. de €30.000-grens (iedereen slaapt)":"Voortgang t.o.v. de €25.000-grens";
+  document.getElementById("budgetpct").textContent=EUR(sum)+" van "+EUR(cap)+" ("+pct.toFixed(0)+"%)";
+  document.getElementById("budget-headroom").innerHTML=sum<=cap?
+    `✓ Binnen de grens. Marge: <b>${EUR(cap-sum)}</b>. ${sc.bespaar?'<br>'+ (cap>25000?'Voorwaarde: ':'Besparen kan op: ')+sc.bespaar:''}`:
+    `✗ Boven de grens — bijstellen.`;
+  // table
+  let h=`<thead><tr><th>Categorie</th><th class="num">Bedrag</th><th class="num">%</th><th class="num">Per gast</th></tr></thead><tbody>`;
+  BUDGET_CATS.forEach((c,i)=>{
+    const b=sc.bedragen[i];
+    h+=`<tr><td>${c}</td><td class="num">${EUR(b)}</td><td class="num">${(b/sum*100).toFixed(1)}%</td><td class="num">${EUR(b/80)}</td></tr>`;
+  });
+  h+=`<tr class="total"><td>Totaal</td><td class="num">${EUR(sum)}</td><td class="num">100%</td><td class="num">${EUR(sum/80)}</td></tr></tbody>`;
+  document.getElementById("budget-table").innerHTML=h;
+  drawBudget();
+}
+function drawBudget(){
+  const sc=SCENARIOS[curScen];
+  document.getElementById("budgetFallback").innerHTML=
+    BUDGET_CATS.map((c,i)=>`${c}: ${EUR(sc.bedragen[i])}`).join(" · ");
+  if(!window.Chart)return;
+  if(charts.budget)charts.budget.destroy();
+  const palette=["#3f625f","#5f8a86","#7ba39d","#5d7358","#7f9678","#9aac8f","#b08d4f","#c9ad74","#d8a89a","#c58e7f","#8a6d38","#a68a52","#6e8f6a","#8fa989","#b7a06a","#d0bd90","#9aa89d","#b57468"];
+  charts.budget=new Chart(document.getElementById("budgetChart"),{type:"doughnut",
+    data:{labels:BUDGET_CATS,datasets:[{data:sc.bedragen,backgroundColor:palette,borderWidth:2,borderColor:"#fffdf8"}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:"58%",
+      plugins:{legend:{position:"right",labels:{boxWidth:11,font:{size:10}}},
+        tooltip:{callbacks:{label:c=>c.label+": "+EUR(c.raw)}}}}});
+}
+document.querySelectorAll("#scen-toggle button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#scen-toggle button").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");curScen=+b.dataset.s;renderBudget();});
+
+/* ---- vendors ---- */
+(function(){
+  const head=["Type","Wanneer boeken","Prijsbereik","Belangrijke vraag","Verborgen kosten","Contract/annulering","Let op"];
+  let h=`<thead><tr>${head.map(x=>`<th>${x}</th>`).join("")}</tr></thead><tbody>`;
+  VENDORS.forEach(v=>h+=`<tr>${v.map((c,i)=>`<td${i===0?'><b>'+c+'</b':'>'+c}</td>`).join("")}</tr>`);
+  document.getElementById("vendor-table").innerHTML=h+"</tbody>";
+})();
+
+/* ---- planning ---- */
+let doneCount=0,totalTasks=0;
+(function(){
+  let html="";let idx=0;
+  PHASES.forEach(ph=>{
+    html+=`<section class="block"><h3 style="font-size:18px;margin-bottom:6px">${ph.naam}</h3><div class="card">`;
+    ph.tasks.forEach(t=>{
+      totalTasks++;
+      html+=`<div class="task" id="task-${idx}">
+        <input type="checkbox" onchange="toggleTask(${idx})">
+        <div class="t-body"><div class="t-title">${t[0]}</div>
+        <div class="t-meta">Prioriteit: ${t[1]} · Eigenaar: ${t[2]} · Kosten: ${t[3]} · ${t[4]} · <span class="pill" style="font-size:10px">open</span></div></div>
+      </div>`;idx++;
+    });
+    html+=`</div></section>`;
+  });
+  document.getElementById("phase-list").innerHTML=html;
+})();
+window.toggleTask=i=>{
+  const el=document.getElementById("task-"+i);
+  el.classList.toggle("done");
+  const pill=el.querySelector(".pill");
+  const done=el.classList.contains("done");
+  pill.textContent=done?"klaar":"open";pill.className="pill "+(done?"good":"");
+  doneCount+=done?1:-1;
+  const pct=Math.round(doneCount/totalTasks*100);
+  document.getElementById("taskfill").style.width=pct+"%";
+  document.getElementById("taskpct").textContent=pct+"%";
+};
+
+/* ---- risks ---- */
+(function(){
+  const head=["Risico","Kans","Impact","Preventie","Noodplan","Eigenaar"];
+  const badge=v=>{const c=v==="Hoog"?"bad":v==="Middel"?"warn":"good";return `<span class="pill ${c}">${v}</span>`;};
+  let h=`<thead><tr>${head.map(x=>`<th>${x}</th>`).join("")}</tr></thead><tbody>`;
+  RISKS.forEach(r=>h+=`<tr><td><b>${r[0]}</b></td><td>${badge(r[1])}</td><td>${badge(r[2])}</td><td class="muted">${r[3]}</td><td class="muted">${r[4]}</td><td>${r[5]}</td></tr>`);
+  document.getElementById("risk-table").innerHTML=h+"</tbody>";
+})();
+
+/* ---- decision matrix ---- */
+const weights={};MATRIX_CRIT.forEach(c=>weights[c.k]=c.w);
+function renderWeights(){
+  document.getElementById("weights").innerHTML=MATRIX_CRIT.map(c=>`
+    <div style="margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;font-size:12.5px"><span>${c.label}</span><b id="w-${c.k}">${weights[c.k]}%</b></div>
+      <input type="range" min="0" max="25" value="${weights[c.k]}" style="width:100%" oninput="setWeight('${c.k}',this.value)">
+    </div>`).join("");
+  updateWeightSum();
+}
+function updateWeightSum(){
+  const sum=Object.values(weights).reduce((a,b)=>a+b,0);
+  const el=document.getElementById("weightsum");
+  el.textContent="(totaal "+sum+"%)";
+  el.style.color=sum===100?"var(--good)":"var(--bad)";
+}
+window.setWeight=(k,v)=>{weights[k]=+v;document.getElementById("w-"+k).textContent=v+"%";updateWeightSum();renderMatrixTable();drawMatrix();};
+function matrixScore(loc){
+  const sum=Object.values(weights).reduce((a,b)=>a+b,0)||1;
+  let tot=0;MATRIX_CRIT.forEach(c=>tot+=(loc.s[c.k]||0)*weights[c.k]);
+  return tot/sum;
+}
+function renderMatrixTable(){
+  let h=`<thead><tr><th>Criterium</th><th class="num">Weging</th>${MATRIX_LOC.map(l=>`<th class="num">${l.naam}</th>`).join("")}</tr></thead><tbody>`;
+  MATRIX_CRIT.forEach(c=>{
+    h+=`<tr><td>${c.label}</td><td class="num">${weights[c.k]}%</td>${MATRIX_LOC.map(l=>`<td class="num">${l.s[c.k]}</td>`).join("")}</tr>`;
+  });
+  h+=`<tr class="total"><td>Gewogen eindscore</td><td class="num"></td>${MATRIX_LOC.map(l=>`<td class="num">${matrixScore(l).toFixed(2)}</td>`).join("")}</tr></tbody>`;
+  document.getElementById("matrix-table").innerHTML=h;
+}
+function drawMatrix(){
+  document.getElementById("matrixFallback").innerHTML=
+    MATRIX_LOC.map(l=>`${l.naam}: ${matrixScore(l).toFixed(2)}`).join(" · ");
+  if(!window.Chart)return;
+  if(charts.matrix)charts.matrix.destroy();
+  charts.matrix=new Chart(document.getElementById("matrixChart"),{type:"bar",
+    data:{labels:MATRIX_LOC.map(l=>l.naam),datasets:[{label:"Gewogen eindscore",
+      data:MATRIX_LOC.map(l=>matrixScore(l)),backgroundColor:["#3f625f","#5f8a86","#b08d4f"],borderRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,indexAxis:"y",
+      scales:{x:{min:0,max:10}},plugins:{legend:{display:false}}}});
+}
+renderWeights();renderMatrixTable();
+
+/* ---- decisions ---- */
+document.getElementById("decisions").innerHTML=DECISIONS.map(d=>`
+  <div class="tl-item"><h4>${d[0]}</h4><p class="muted">${d[1]}</p></div>`).join("");
+
+/* ---- restore saved selection across sessions ---- */
+(async function initFavs(){
+  await loadFavs();
+  if(favs.size){
+    renderLocs();
+    renderTop3();
+    renderSelectie();
+    updateFavCount();
+  }
+})();
+
+/* initial charts for default open sections if visited */
+</script>
+</body>
+</html>
